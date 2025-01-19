@@ -35,9 +35,9 @@ Puedes visitar mi portafolio en línea haciendo clic [aquí](PENDIENTE).
 
 ## ✉️ Contacto
 Si deseas contactarme, puedes hacerlo a través de:
-- **Correo electrónico**: [tu-email@ejemplo.com](samurpo20@gmail.com)
-- **LinkedIn**: [linkedin.com/in/tuusuario](https://www.linkedin.com/in/samuel-gomez-restrepo-717238191/)
-- **GitHub**: [github.com/tuusuario](https://github.com/NotExer)
+- **Correo electrónico**: [samurpo20@gmail.com](samurpo20@gmail.com)
+- **LinkedIn**: [linkedin.com/in/Samuel Gomez](https://www.linkedin.com/in/samuel-gomez-restrepo-717238191/)
+- **GitHub**: [github.com/NotExer](https://github.com/NotExer)
 
 ---
 
