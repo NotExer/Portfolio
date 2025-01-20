@@ -9,6 +9,12 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  background-color: rgb(51, 51, 51);
  }
 
+
+
+
+
+
+
 .navbar { display: flex;
  align-items: center;
  width: 100%;
@@ -16,6 +22,9 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  background-color: rgb(22, 22, 22);
  color: rgb(238, 238, 238);
  position: fixed;
+ z-index: 1;
+ 
+ 
  }
 
 .navbar.scrolled { background-color: rgba(22, 22, 22, 0.8);
@@ -24,6 +33,7 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
 
 .logo { height: 25px;
  margin: 0px 30px;
+
  }
 
 .menu { display: flex;
@@ -61,7 +71,8 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  transition: opacity 0.5s, transform 0.5s, visibility 0.5s;
  }
 
-  .navbar img { margin: 12px;
+  .navbar img { 
+    margin: 12px;
  }
 
   .hamburger { display: flex;
@@ -90,11 +101,13 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  background-color: rgb(22, 22, 22);
  transition: 0.7s;
  position: fixed;
+ z-index: 1;
  }
 
   .logo-show { display: none;
  height: 25px;
  margin: 12px;
+ background-color: rgba(255, 255, 255, 0.5);
  }
 
   .navbar-show { display: flex;
@@ -105,6 +118,7 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  height: 50px;
  position: fixed;
  width: 100%;
+ z-index: 1;
  }
 
   .line { transition: 0.3s;
@@ -129,7 +143,183 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  align-items: center;
  height: 100vh;
  background-color: rgb(51, 51, 51);
+ filter: 
+ drop-shadow(0 0 10px #333) 
+ drop-shadow(0 0 10px #333)
+ drop-shadow(0 0 10px #9D00FF)
+ drop-shadow(0 0 20px #9D00FF)
+ drop-shadow(0 0 30px #9D00FF);
  }
+
+
+ .name {
+  font-size: 100px;
+  text-shadow: 
+  0 0 5px #ffffff,
+  0 0 10px #ffffff,
+  0 0 20px #b500ec, /* Color cálido */
+  0 0 30px #dc06f0,
+  0 0 40px #bb10ff,
+  0 0 50px #f700ff;
+ }
+
+
+.img { height: 400px;
+ width: 400px;
+ filter: 
+ drop-shadow(0 0 10px #ffffff) 
+ drop-shadow(0 0 10px #ffffff)
+ drop-shadow(0 0 10px #ff9900)
+ drop-shadow(0 0 20px #ff9900)
+ drop-shadow(0 0 30px #ff9900);
+ z-index: 1;
+ }
+
+
+
+.icon{
+  width: 35px;
+  height: 35px;
+}
+
+
+.container_text{  
+margin: 70px;
+text-align: center;
+ }
+
+.info{
+  font-size: 50px;
+}
+
+.descarga_cv{
+  background-color : #000;
+  border-radius: 40px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: inherit;
+  padding: 15px 20px;
+  border: none;
+}
+
+
+
+.navegacion{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 30px;
+
+}
+
+.informacion{ 
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+ 
+}
+
+
+
+
+.container_main{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0px 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1000px) {
+
+
+.info_container{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+
+
+  .info{
+    font-size: 30px;
+  }
+
+
+.name{
+  font-size: 50px;}
+
+.navegacion{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+ 
+}
+
+.descarga_cv{
+  margin: 10px 0px;
+}
+
+.container_main{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px;
+  flex-direction: column-reverse;
+  }
+
+.img{
+  width: 200px;
+  height: 200px;
+  z-index: -1;
+}
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #About { display: flex;
  justify-content: center;
@@ -138,15 +328,6 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  background-color: rgb(68, 68, 68);
  }
 
-.img { height: 200px;
- width: 200px;
- }
-
-.name { font-size: 56px;
- }
-
-.no-scroll { overflow: hidden;
- }
 
 #Skills { display: flex;
  justify-content: center;
