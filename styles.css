@@ -10,11 +10,6 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  }
 
 
-
-
-
-
-
 .navbar { display: flex;
  align-items: center;
  width: 100%;
@@ -47,7 +42,8 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  font-size: 12px;
  }
 
-.item:hover { color: rgb(255, 255, 255);
+.item:hover { 
+  color: rgb(255, 255, 255);
  }
 
 .hamburger { display: none;
@@ -65,6 +61,7 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
 
 @media (max-width: 833px) {
   .navbar { justify-content: space-between;
+    background-color: transparent;
  }
 
   .item { display: none;
@@ -142,36 +139,37 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  justify-content: center;
  align-items: center;
  height: 100vh;
- background-color: rgb(51, 51, 51);
- filter: 
- drop-shadow(0 0 10px #333) 
- drop-shadow(0 0 10px #333)
- drop-shadow(0 0 10px #9D00FF)
- drop-shadow(0 0 20px #9D00FF)
- drop-shadow(0 0 30px #9D00FF);
+ background: linear-gradient(180deg, #1e1e1e, #1e1e1e, #3a3a3a);
+
  }
+
+
+.background_title{
+  font-size: 300px;
+  position: absolute;
+  top: 90px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  text-shadow: 12px 12px 24px #242121, -12px -12px 24px #313030;
+  color: #111;
+}
+
+
+
+
+
 
 
  .name {
   font-size: 100px;
-  text-shadow: 
-  0 0 5px #ffffff,
-  0 0 10px #ffffff,
-  0 0 20px #b500ec, /* Color cálido */
-  0 0 30px #dc06f0,
-  0 0 40px #bb10ff,
-  0 0 50px #f700ff;
+  
  }
 
 
-.img { height: 400px;
+.img { 
+  margin: 60px;
+  height: 400px;
  width: 400px;
- filter: 
- drop-shadow(0 0 10px #ffffff) 
- drop-shadow(0 0 10px #ffffff)
- drop-shadow(0 0 10px #ff9900)
- drop-shadow(0 0 20px #ff9900)
- drop-shadow(0 0 30px #ff9900);
  z-index: 1;
  }
 
@@ -180,6 +178,9 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
 .icon{
   width: 35px;
   height: 35px;
+  margin: 5px;
+
+
 }
 
 
@@ -189,7 +190,9 @@ text-align: center;
  }
 
 .info{
-  font-size: 50px;
+  font-size: 40px;
+  max-width: 500px;
+  font-weight: 600;
 }
 
 .descarga_cv{
@@ -202,6 +205,7 @@ text-align: center;
   line-height: inherit;
   padding: 15px 20px;
   border: none;
+  margin: 0px 20px;
 }
 
 
@@ -229,7 +233,7 @@ text-align: center;
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding: 0px 40px;
+padding: 0px 30px;
 }
 
 
@@ -256,6 +260,7 @@ padding: 0px 40px;
 
   .info{
     font-size: 30px;
+    max-width: 300px;
   }
 
 
@@ -272,14 +277,14 @@ padding: 0px 40px;
 }
 
 .descarga_cv{
-  margin: 10px 0px;
+  margin: 30px 0px;
 }
 
 .container_main{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 40px;
+  padding: 0px 20px;
   flex-direction: column-reverse;
   }
 
@@ -290,20 +295,13 @@ padding: 0px 40px;
   
 }
 
-
-
-
-
+.background_title{
+  font-size: 100px;
 }
 
 
 
-
-
-
-
-
-
+}
 
 
 
