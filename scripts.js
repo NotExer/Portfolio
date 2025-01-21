@@ -44,25 +44,22 @@ function toggleMenu() {
   function closeMenu() {
     const hamburger = document.querySelector('.hamburger');
     const menus = document.querySelectorAll('.item, .item-show, .menu, .menu-show, .logo, .logo-show, .navbar, .navbar-show');
-    const body = document.body;  // Obtener el body
-  
-    // Remover las clases de los elementos del menú con transición
+    const body = document.body;  
+ 
     menus.forEach(menu => {
       ['item', 'menu', 'logo', 'navbar'].forEach(baseClass => {
         if (menu.classList.contains(`${baseClass}-show`)) {
           menu.classList.remove(`${baseClass}-show`);
-          // Activar la transición agregando la clase 'active'
+
           setTimeout(() => {
             menu.classList.add(baseClass);
-          }, 100); // Esto crea el retraso antes de restaurar las clases
+          }, 100); 
         }
       });
     });
-  
-    // Remover la clase activa en el botón de menú
+
     hamburger.classList.remove('active');
   
-    // Permitir el scroll en el body
     body.classList.remove('no-scroll');
   }
   
