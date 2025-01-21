@@ -14,7 +14,7 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  align-items: center;
  width: 100%;
  justify-content: center;
- background-color: rgb(22, 22, 22);
+ background-color: transparent;
  color: rgb(238, 238, 238);
  position: fixed;
  z-index: 1;
@@ -29,9 +29,9 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
 .logo { 
   width: 25px;
   height: 25px;
- margin: 0px 30px;
- filter: invert(100%);
- object-fit: cover;
+  margin: 0px 30px;
+  filter: invert(100%);
+  object-fit: cover;
  }
 
 .menu { display: flex;
@@ -39,15 +39,45 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  list-style: none;
  }
 
-.item { cursor: pointer;
- transition: color 0.3s;
- margin: 15px;
- font-size: 12px;
- }
+ .item {
+  cursor: pointer;
+  transition: color 0.3s;
+  margin: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  position: relative; /* Necesario para que el ::after se posicione relativo al .item */
+}
 
-.item:hover { 
+.item a {
+  text-decoration: none;
+  color: inherit; /* El texto hereda el color del elemento .item */
+  display: inline-block; /* Esto ayuda a centrar correctamente el pseudo-elemento */
+}
+
+/* Efecto en hover */
+.item:hover {
   color: rgb(255, 255, 255);
- }
+}
+
+/* Barra debajo con ::after */
+.item a::after {
+  content: ""; /* Es necesario para generar el pseudo-elemento */
+  position: absolute;
+  bottom: 0; /* Coloca la barra en la parte inferior del enlace */
+  left: 50%; /* Inicia desde el centro */
+  transform: translateX(-50%) scaleX(0); /* Oculto por defecto */
+  transform-origin: center; /* Centro como punto de origen */
+  width: 100%; /* Ancho de la barra */
+  height: 2px; /* Grosor de la barra */
+  background-color: rgb(255, 255, 255); /* Color de la barra */
+  transition: transform 0.2s ease; /* Animación suave */
+  margin-bottom: -2px; 
+}
+
+.item a:hover::after {
+  transform: translateX(-50%) scaleX(1); /* Barra visible y expandida */
+}
+
 
 .hamburger { display: none;
  flex-direction: column;
@@ -142,8 +172,8 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  justify-content: center;
  align-items: center;
  height: 100vh;
- background: linear-gradient(180deg, #1e1e1e, #1e1e1e, #3a3a3a);
-
+ background: linear-gradient(180deg, #161616, #2D1E2C, #2D1E2C);
+ animation: gradientAnimation 10s ease infinite;
  }
 
 
@@ -164,13 +194,18 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
 
 
  .name {
-  font-size: 100px;
-  
+  background: linear-gradient(90deg, #d613e7, #8b51f5); /* Gradiente */
+  -webkit-background-clip: text; /* Clip para fondo del texto */
+  -webkit-text-fill-color: transparent; /* Fondo del texto transparente */
+  text-align: center; /* Alineación opcional */
+  font-size: 70px;
+  text-shadow:  0px 0px 10px #faf2f2;
  }
 
 
+
 .img { 
-  margin: 60px;
+  margin: 0px 60px;
   height: 400px;
  width: 400px;
  z-index: 1;
@@ -182,9 +217,18 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
   width: 35px;
   height: 35px;
   margin: 5px;
-
+  transition: 0.3s;
+  filter: invert(1);
 
 }
+
+.icon:hover{
+  transform: scale(1.2);
+  transition: 0.3s;
+  box-shadow: 0px 0px 10px 0px #43ec00;
+}
+
+
 
 
 .container_text{  
@@ -193,9 +237,10 @@ text-align: center;
  }
 
 .info{
-  font-size: 40px;
-  max-width: 500px;
-  font-weight: 600;
+  font-size: 30px;
+  max-width: 800px;
+  font-weight: 700;
+  text-shadow:  0px 0px 10px #faf2f2;
 }
 
 .descarga_cv{
@@ -209,7 +254,18 @@ text-align: center;
   padding: 15px 20px;
   border: none;
   margin: 0px 20px;
+  transition: 0.5s;
 }
+
+.descarga_cv:hover{
+  transition: 0.3s;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0px 0px 10px 0px #dd00fa;
+}
+
+
+
 
 
 

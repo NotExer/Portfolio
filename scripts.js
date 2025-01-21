@@ -63,3 +63,10 @@ function toggleMenu() {
     body.classList.remove('no-scroll');
   }
   
+
+  document.querySelector('.descarga_cv').addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = 'documents/CV Samuel Gómez Restrepo.pdf'; 
+    link.download = 'CV Samuel Gómez Restrepo.pdf'; 
+    link.click();
+  });
