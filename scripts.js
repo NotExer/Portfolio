@@ -22,7 +22,7 @@ function toggleMenu() {
     // Bloquear o permitir el scroll en el body
     body.classList.toggle('no-scroll');
     
-    // Aplicar transición de cierre al menú
+    // Aplicar transición de cierre al men
     menus.forEach(menu => {
       if (menu.classList.contains('item-show')) {
         menu.addEventListener('click', () => {
@@ -75,19 +75,6 @@ function toggleMenu() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   function randomizePosition(light) {
     const container = document.getElementById('Home');
     const containerWidth = container.offsetWidth;
@@ -108,3 +95,6 @@ function toggleMenu() {
   // Aplicar la función a cada luz para que cada una tenga su propio movimiento aleatorio
   const lights = document.querySelectorAll('.light');
   lights.forEach(light => randomizePosition(light));
+
+
+
