@@ -70,3 +70,41 @@ function toggleMenu() {
     link.download = 'CV Samuel Gómez Restrepo.pdf'; 
     link.click();
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function randomizePosition(light) {
+    const container = document.getElementById('Home');
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+
+    function setRandomPosition() {
+      // Genera posiciones aleatorias sin sobrepasar los límites de la pantalla
+      const x = Math.random() * (containerWidth - light.offsetWidth);
+      const y = Math.random() * (containerHeight - light.offsetHeight);
+
+      light.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    setRandomPosition(); // Coloca la primera luz aleatoriamente cuando se carga
+    setInterval(setRandomPosition, 6000); // Reposiciona la luz aleatoriamente cada 6 segundos
+  }
+
+  // Aplicar la función a cada luz para que cada una tenga su propio movimiento aleatorio
+  const lights = document.querySelectorAll('.light');
+  lights.forEach(light => randomizePosition(light));

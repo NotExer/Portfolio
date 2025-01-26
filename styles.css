@@ -3,24 +3,35 @@
  box-sizing: border-box;
  text-decoration: none;
  color: rgb(238, 238, 238);
+ 
  }
 
 body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
  background-color: rgb(51, 51, 51);
  }
 
+a{
+  display: inline-block; 
+  margin: 0;            
+  padding: 0;           
+  line-height: 0;     
+}
+ .navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1); /* Fondo semi-transparente */
+  backdrop-filter: blur(10px); /* Efecto de cristal */
+  -webkit-backdrop-filter: blur(10px); /* Compatibilidad con navegadores antiguos */
+  color: rgb(238, 238, 238); /* Texto en color claro */
+  position: fixed;
+  top: 0;
+  z-index: 1; /* Asegura que la navbar esté por encima del contenido */
+  opacity: 1;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para mejor separación */
+}
 
-.navbar { display: flex;
- align-items: center;
- width: 100%;
- justify-content: center;
- background-color: transparent;
- color: rgb(238, 238, 238);
- position: fixed;
- z-index: 1;
- 
- 
- }
 
 .navbar.scrolled { background-color: rgba(22, 22, 22, 0.8);
  backdrop-filter: blur(5px);
@@ -54,10 +65,7 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
   display: inline-block; /* Esto ayuda a centrar correctamente el pseudo-elemento */
 }
 
-/* Efecto en hover */
-.item:hover {
-  color: rgb(255, 255, 255);
-}
+
 
 /* Barra debajo con ::after */
 .item a::after {
@@ -72,10 +80,12 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
   background-color: rgb(255, 255, 255); /* Color de la barra */
   transition: transform 0.2s ease; /* Animación suave */
   margin-bottom: -2px; 
+  
 }
 
 .item a:hover::after {
   transform: translateX(-50%) scaleX(1); /* Barra visible y expandida */
+
 }
 
 
@@ -120,6 +130,7 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  transition: 0.5s;
  color: rgb(232, 232, 237);
  position: relative;
+ 
  }
 
   .menu-show { display: flex;
@@ -172,8 +183,8 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
  justify-content: center;
  align-items: center;
  height: 100vh;
- background: linear-gradient(180deg, #161616, #2D1E2C, #2D1E2C);
- animation: gradientAnimation 10s ease infinite;
+ background: #000;
+
  }
 
 
@@ -188,46 +199,66 @@ body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
 }
 
 
-
-
-
-
-
  .name {
   background: linear-gradient(90deg, #d613e7, #8b51f5); /* Gradiente */
   -webkit-background-clip: text; /* Clip para fondo del texto */
   -webkit-text-fill-color: transparent; /* Fondo del texto transparente */
   text-align: center; /* Alineación opcional */
   font-size: 70px;
-  text-shadow:  0px 0px 10px #faf2f2;
  }
 
 
 
 .img { 
-  margin: 0px 60px;
-  height: 400px;
- width: 400px;
- z-index: 1;
+  margin: 0px 10px 0px 50px;
+  height: 300px;
+  width: 300px;
+  display: inline-block; /* Opcional, para ajustar el tamaño al contenido */
+  animation: breathe 2s ease-in-out infinite;
  }
 
 
+ @keyframes breathe {
+  0%, 100% {
+    transform: translateY(0); /* Posición inicial y final */
+  }
+  50% {
+    transform: translateY(-20px); /* Mueve hacia arriba */
+  }
+}
 
-.icon{
-  width: 35px;
-  height: 35px;
-  margin: 5px;
+
+
+
+
+
+.redes {
+  display: flex; /* Alinea los íconos en una fila */
+  flex-wrap: nowrap; /* Evita que los elementos se envuelvan en varias filas */
+  justify-content: center; /* Centra los íconos horizontalmente */
+  gap: 10px; /* Espaciado entre los íconos */
+ 
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
   transition: 0.3s;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 5px 0; /* Elimina margen horizontal, ajusta el vertical */
+  object-fit: cover;
+}
+
+.icon:hover {
+  transition: 0.3s;
+  
+  box-shadow: 
+  inset 0 0px 10px  #22FF05 , 
+  0 0px 10px  #22FF05 ; 
   filter: invert(1);
-
-}
-
-.icon:hover{
-  transform: scale(1.2);
-  transition: 0.3s;
-  box-shadow: 0px 0px 10px 0px #43ec00;
-}
-
+} 
 
 
 
@@ -236,32 +267,59 @@ margin: 70px;
 text-align: center;
  }
 
-.info{
+
+ .info {
   font-size: 30px;
-  max-width: 800px;
+  max-width: 500px;
   font-weight: 700;
-  text-shadow:  0px 0px 10px #faf2f2;
+  text-shadow: 0px 0px 10px #faf2f2;
+
 }
 
-.descarga_cv{
-  background-color : #000;
-  border-radius: 40px;
-  color: #fff;
+.info_container{
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+  flex-direction: column;
+  max-width: 640px;
+}
+
+.icon_cv {
+  width: 30px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: 30px;
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.descarga_cv {
+  display: flex; /* Coloca los elementos en línea */
+  align-items: center; /* Centra verticalmente la imagen y el texto */
+  justify-content: center; /* Centra horizontalmente el contenido (opcional) */
+  background-color: #fff;
+  border-radius: 20px;
+  color: #000;
   cursor: pointer;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: inherit;
   padding: 15px 20px;
   border: none;
-  margin: 0px 20px;
   transition: 0.5s;
+  margin: 0px 50px;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
 }
+
+
+
+
 
 .descarga_cv:hover{
   transition: 0.3s;
-  background-color: #fff;
+  background-color: #FFF;
   color: #000;
-  box-shadow: 0px 0px 10px 0px #dd00fa;
+  box-shadow: 
+  inset 0 0px 10px  #22FF05, 
+  0 0px 10px  #22FF05; 
+  filter: invert(1);
 }
 
 
@@ -272,8 +330,9 @@ text-align: center;
 .navegacion{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 30px;
+
 
 }
 
@@ -292,7 +351,7 @@ text-align: center;
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding: 0px 30px;
+
 }
 
 
@@ -313,6 +372,7 @@ padding: 0px 30px;
   display: flex;
   flex-direction: column;
   margin: 20px;
+  align-items: center;
 }
 
 
@@ -343,21 +403,25 @@ padding: 0px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 20px;
+  padding: 0px 10px;
   flex-direction: column-reverse;
   }
 
 .img{
   width: 200px;
   height: 200px;
-  z-index: -1;
-  
+
 }
 
 .background_title{
   font-size: 100px;
 }
 
+
+.img {
+  margin: 0;
+  margin-top: 70px;
+}
 
 
 }
