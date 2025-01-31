@@ -92,9 +92,247 @@ function toggleMenu() {
     setInterval(setRandomPosition, 6000); // Reposiciona la luz aleatoriamente cada 6 segundos
   }
 
-  // Aplicar la función a cada luz para que cada una tenga su propio movimiento aleatorio
-  const lights = document.querySelectorAll('.light');
-  lights.forEach(light => randomizePosition(light));
+  
 
 
 
+
+
+
+
+
+
+// Seleccionar todos los enlaces con href que apuntan a un id
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+
+    // Obtener el id del destino desde el href
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      // Obtener la posición superior del destino
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+
+      // Llamar a la función de animación para desplazarse
+      smoothScrollTo(targetPosition, 500); // 500ms de duración
+    }
+  });
+});
+
+// Función de desplazamiento suave
+function smoothScrollTo(target, duration) {
+  const startPosition = window.pageYOffset;
+  const distance = target - startPosition;
+  let startTime = null;
+
+  function animation(currentTime) {
+    if (!startTime) startTime = currentTime;
+
+    // Calcular el tiempo transcurrido
+    const timeElapsed = currentTime - startTime;
+
+    // Aplicar una función de facilidad para suavizar el desplazamiento
+    const ease = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+
+    // Desplazar la ventana
+    window.scrollTo(0, ease);
+
+    // Continuar la animación si aún no ha terminado
+    if (timeElapsed < duration) {
+      requestAnimationFrame(animation);
+    }
+  }
+
+  requestAnimationFrame(animation);
+}
+
+// Función de facilidad (ease-in-out)
+function easeInOutQuad(t, b, c, d) {
+  t /= d / 2;
+  if (t < 1) return (c / 2) * t * t + b;
+  t--;
+  return (-c / 2) * (t * (t - 2) - 1) + b;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let isScrolling = false;
+let scrollSpeed = 0;
+let friction = 0.05; // Controla la cantidad de fricción
+let scrollDirection = 0; // Dirección del scroll
+let targetPosition = 0; // La posición a la que queremos llegar
+
+// Función que actualiza la posición de desplazamiento con fricción
+function smoothScroll() {
+  if (Math.abs(scrollSpeed) < 0.1) {
+    isScrolling = false; // Detener cuando la velocidad es baja
+    scrollSpeed = 0;
+  }
+
+  // Si estamos desplazándonos, actualizar la posición
+  if (isScrolling) {
+    // Aplicar la fricción
+    scrollSpeed *= (1 - friction);
+
+    // Desplazar la ventana según la velocidad
+    window.scrollBy(0, scrollSpeed);
+
+    // Llamar recursivamente para continuar el movimiento
+    requestAnimationFrame(smoothScroll);
+  }
+}
+
+// Interceptar el scroll del mouse
+window.addEventListener('wheel', function(e) {
+  if (!isScrolling) {
+    isScrolling = true;
+    smoothScroll(); // Iniciar el desplazamiento con fricción
+  }
+
+  // Determinar la dirección del scroll
+  scrollDirection = e.deltaY > 0 ? 1 : -1;
+
+  // Ajustar la velocidad del scroll (puedes ajustar este valor)
+  scrollSpeed += scrollDirection * 10;
+  e.preventDefault(); // Prevenir el comportamiento de desplazamiento normal
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const baseText = "I am a full stack dev but also a "; // Parte fija del texto
+const textArray = [
+  "QA tester",
+  "gamer",
+  "pro",
+  "genius"
+];
+
+let currentTextIndex = 0;
+let currentLetterIndex = 0;
+let isDeleting = false;
+const typingSpeed = 100; // Velocidad de escritura
+const deletingSpeed = 50; // Velocidad de borrado
+const pauseBetweenChanges = 3000; // Pausa de 4 segundos entre cambios de palabra
+
+const infoElement = document.querySelector('.info');
+
+// Función que maneja el efecto de escritura y borrado
+function typeAndDelete() {
+  // Solo escribimos y borramos la parte dinámica (textArray)
+  const currentText = baseText + textArray[currentTextIndex]; // Combina el texto fijo con la palabra actual
+
+  if (isDeleting) {
+    // Borrar el texto dinámico
+    if (currentLetterIndex > baseText.length) { // Solo borra después del baseText
+      currentLetterIndex--;
+      infoElement.textContent = currentText.substring(0, currentLetterIndex);
+    } else {
+      // Cambiar de frase
+      isDeleting = false;
+      currentTextIndex = (currentTextIndex + 1) % textArray.length;
+      // Pausa antes de empezar a escribir de nuevo
+      setTimeout(typeAndDelete, pauseBetweenChanges); // Pausa entre frases
+      return; // Termina la iteración actual
+    }
+  } else {
+    // Escribir el texto dinámico
+    if (currentLetterIndex < currentText.length) {
+      currentLetterIndex++;
+      infoElement.textContent = currentText.substring(0, currentLetterIndex);
+    } else {
+      // Cuando termina de escribir, empezar a borrar después de una pausa
+      setTimeout(() => {
+        isDeleting = true;
+        typeAndDelete();
+      }, pauseBetweenChanges); // Pausa antes de borrar
+      return;
+    }
+  }
+
+  // Continuar la animación
+  setTimeout(typeAndDelete, isDeleting ? deletingSpeed : typingSpeed);
+}
+
+// Iniciar el efecto de escritura y borrado
+typeAndDelete();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Crear un IntersectionObserver
+  const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              // Cuando el elemento entra en la vista, añadir la clase para activar la animación
+              entry.target.classList.add('bounceInUp');
+              // Dejar de observar el elemento después de que la animación se haya disparado
+              observer.unobserve(entry.target);
+          }
+      });
+  }, { threshold: 0.5 }); // 0.5 significa que el 50% del elemento debe estar en la vista para activarse
+
+  // Observar todos los elementos con la clase .animate-item
+  const elements = document.querySelectorAll('.animate-item');
+  elements.forEach(element => observer.observe(element));
+});
