@@ -196,32 +196,25 @@ function smoothScroll() {
   }
 }
 
-// Interceptar el scroll del mouse
+
+
+
+
+
+
+
+
+
 window.addEventListener('wheel', function(e) {
   if (!isScrolling) {
     isScrolling = true;
-    smoothScroll(); // Iniciar el desplazamiento con fricción
+    smoothScroll();
   }
 
-  // Determinar la dirección del scroll
   scrollDirection = e.deltaY > 0 ? 1 : -1;
-
-  // Ajustar la velocidad del scroll (puedes ajustar este valor)
   scrollSpeed += scrollDirection * 10;
-  e.preventDefault(); // Prevenir el comportamiento de desplazamiento normal
-});
-
-
-
-
-
-
-
-
-
-
-
-
+  e.preventDefault();
+}, { passive: false }); // Desactivar passive aquí
 
 
 
