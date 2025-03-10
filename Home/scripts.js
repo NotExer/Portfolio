@@ -75,28 +75,6 @@ function toggleMenu() {
 
 
 
-  function randomizePosition(light) {
-    const container = document.getElementById('Home');
-    const containerWidth = container.offsetWidth;
-    const containerHeight = container.offsetHeight;
-
-    function setRandomPosition() {
-      // Genera posiciones aleatorias sin sobrepasar los límites de la pantalla
-      const x = Math.random() * (containerWidth - light.offsetWidth);
-      const y = Math.random() * (containerHeight - light.offsetHeight);
-
-      light.style.transform = `translate(${x}px, ${y}px)`;
-    }
-
-    setRandomPosition(); // Coloca la primera luz aleatoriamente cuando se carga
-    setInterval(setRandomPosition, 6000); // Reposiciona la luz aleatoriamente cada 6 segundos
-  }
-
-  
-
-
-
-
 
 
 
@@ -328,4 +306,54 @@ document.addEventListener("DOMContentLoaded", function () {
   // Observar todos los elementos con la clase .animate-item
   const elements = document.querySelectorAll('.animate-item');
   elements.forEach(element => observer.observe(element));
+});
+
+
+
+
+
+
+
+const proyectCards = document.querySelectorAll('.media-container');
+
+proyectCards.forEach(container => {
+  const video = container.querySelector('.proyect_video');
+
+  container.addEventListener('mouseenter', () => {
+    video.currentTime = 0; // Empieza desde el inicio (opcional)
+    video.play();
+  });
+
+  container.addEventListener('mouseleave', () => {
+    video.pause();
+  });
+});
+
+
+
+
+
+
+function toggleProjects() {
+  const extraProyects = document.getElementById('extraProyects');
+  const button = document.getElementById('showMoreBtn');
+
+  if (extraProyects.classList.contains('expanded')) {
+    extraProyects.classList.remove('expanded');
+    button.textContent = 'Mostrar más';
+  } else {
+    extraProyects.classList.add('expanded');
+    button.textContent = 'Mostrar menos';
+  }
+}
+
+
+
+
+
+const glow = document.querySelector('.glow');
+
+document.addEventListener('mousemove', (e) => {
+  glow.style.left = `${e.clientX}px`;
+  glow.style.top = `${e.clientY}px`;
 });

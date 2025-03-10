@@ -1,0 +1,1091 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  color: rgb(238, 238, 238);
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: #100030;
+}
+
+a {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: rgb(238, 238, 238);
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  opacity: 1;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar.scrolled {
+  background-color: rgba(22, 22, 22, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.logo {
+  width: 25px;
+  height: 25px;
+  margin: 0px 30px;
+  filter: invert(100%);
+  object-fit: cover;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.item {
+  cursor: pointer;
+  transition: color 0.3s;
+  margin: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  position: relative;
+}
+
+.item a {
+  text-decoration: none;
+  color: inherit; /* El texto hereda el color del elemento .item */
+  display: inline-block; /* Esto ayuda a centrar correctamente el pseudo-elemento */
+}
+
+.item a::after {
+  content: ""; /* Es necesario para generar el pseudo-elemento */
+  position: absolute;
+  bottom: 0; /* Coloca la barra en la parte inferior del enlace */
+  left: 50%; /* Inicia desde el centro */
+  transform: translateX(-50%) scaleX(0); /* Oculto por defecto */
+  transform-origin: center; /* Centro como punto de origen */
+  width: 100%; /* Ancho de la barra */
+  height: 2px; /* Grosor de la barra */
+  background-color: rgb(255, 255, 255); /* Color de la barra */
+  transition: transform 0.2s ease; /* Animación suave */
+  margin-bottom: -2px;
+}
+
+.item a:hover::after {
+  transform: translateX(-50%) scaleX(1); /* Barra visible y expandida */
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  margin: 9px 0px;
+}
+
+.hamburger div {
+  width: 17px;
+  height: 2px;
+  border-radius: 1px;
+  background: rgb(238, 238, 238);
+}
+
+#Home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.background_title {
+  font-size: 300px;
+  position: absolute;
+  top: 90px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  text-shadow: 12px 12px 24px #242121, -12px -12px 24px #313030;
+  color: #111;
+}
+
+.name {
+  background: linear-gradient(90deg, #d613e7, #8b51f5); /* Gradiente */
+  -webkit-background-clip: text; /* Clip para fondo del texto */
+  -webkit-text-fill-color: transparent; /* Fondo del texto transparente */
+
+  font-size: 90px;
+}
+
+.img {
+  margin: 0px 10px 0px 50px;
+  height: 300px;
+  width: 300px;
+  display: inline-block; /* Opcional, para ajustar el tamaño al contenido */
+  animation: breathe 2s ease-in-out infinite;
+  border-radius: 50%;
+
+  padding: 10px;
+  border: 5px solid #fff;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0); /* Posición inicial y final */
+  }
+  50% {
+    transform: translateY(-20px); /* Mueve hacia arriba */
+  }
+}
+
+.redes {
+  display: flex; /* Alinea los íconos en una fila */
+  flex-wrap: nowrap; /* Evita que los elementos se envuelvan en varias filas */
+  justify-content: center; /* Centra los íconos horizontalmente */
+  gap: 10px; /* Espaciado entre los íconos */
+  margin: 0px 40px;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  transition: 0.3s;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+
+  object-fit: cover;
+}
+
+.icon:hover {
+  transition: 0.3s;
+  box-shadow: inset 0 0px 10px #22ff05, 0 0px 10px #22ff05;
+  filter: invert(1);
+}
+
+.container_text {
+  margin: 70px;
+  text-align: center;
+}
+
+.info {
+  font-size: 30px;
+  max-width: 700px;
+  font-weight: 700;
+  text-shadow: 0px 0px 10px #faf2f2;
+}
+
+.info_container {
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+  flex-direction: column;
+  max-width: 640px;
+}
+
+.icon_cv {
+  width: 30px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: 30px;
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.descarga_cv {
+  display: flex; /* Coloca los elementos en línea */
+  align-items: center; /* Centra verticalmente la imagen y el texto */
+  justify-content: center; /* Centra horizontalmente el contenido (opcional) */
+  background-color: #fff;
+  border-radius: 20px;
+  color: #000;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: inherit;
+  padding: 15px 20px;
+  border: none;
+  transition: 0.5s;
+  margin: 0px 40px;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+.descarga_cv:hover {
+  transition: 0.3s;
+  background-color: #fff;
+  color: #000;
+  box-shadow: inset 0 0px 10px #22ff05, 0 0px 10px #22ff05;
+  filter: invert(1);
+}
+
+.navegacion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px;
+}
+
+.informacion {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container_main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Establecer el estilo inicial (fuera de pantalla) */
+.animate-item {
+  opacity: 0;
+  transform: translateY(30px); /* Colocar el elemento fuera de la pantalla */
+  transition: opacity 1s, transform 2s; /* Asegurar la transición cuando se active la animación */
+}
+
+/* Definir la animación bounceInUp */
+.bounceInUp {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flecha {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%); /* Centra el contenedor horizontalmente */
+  cursor: pointer;
+  display: inline-block; /* Hace que el enlace envuelva a la imagen */
+}
+
+.flecha img {
+  width: 40px;
+  height: auto;
+  filter: invert(1); /* Sigue aplicando el filtro */
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+#About {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 140px 0px;
+
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+  z-index: 0; /* Asegura que el contenido está por encima del pseudo-elemento */
+}
+
+.sub_title {
+  font-size: 50px;
+  margin: 20px;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(90deg, #d613e7, #8b51f5); /* Gradiente */
+  -webkit-background-clip: text; /* Clip para fondo del texto */
+  -webkit-text-fill-color: transparent; /* Fondo del texto transparente */
+}
+
+.divider {
+  width: 2px; /* Grosor de la línea */
+  background: #ccc; /* Color de la línea */
+  height: 250px; /* Altura completa del contenedor */
+}
+
+.about_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 10px;
+}
+
+.about_text {
+  max-width: 300px;
+  font-size: 17px;
+  margin: 80px;
+  font-weight: 600;
+  text-align: left;
+  line-height: 25px;
+  color: #86868b; /* Color general del texto */
+  display: block; /* Esto asegura que el texto fluya normalmente */
+}
+
+.skill_img {
+  width: 60px;
+  height: 60px;
+  margin: 10px 5px;
+}
+
+.slice {
+  position: relative;
+  display: inline-block;
+}
+
+.slice_img {
+  width: 80px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.slice::after {
+  content: attr(data-label); /* Ahora usa data-label en lugar de alt */
+  position: absolute;
+  bottom: 20px; /* Ajusta la posición debajo de la imagen */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #000;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  text-align: center;
+}
+
+.slice:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+  z-index: 1;
+}
+
+
+
+.proyect_ability {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px 0px 0px; 
+  padding: 10px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #e81cff, #40c9ff);
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.proyect_title {
+  margin: 5px 0px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+
+
+#Skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 140px 0px;
+
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 0; /* Asegura que el contenido está por encima del pseudo-elemento */
+}
+
+.skills_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 10px;
+}
+
+.experience {
+  max-width: 350px;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: left;
+  color: #86868b;
+}
+
+.skills_box {
+  margin: 0px 40px;
+  max-width: 350px;
+}
+
+.skills_grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.experience_box {
+  margin: 0px 40px;
+}
+
+.experience_title {
+  margin: 20px 0px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.experience_subtitle {
+  margin: 10px 0px;
+}
+
+.skill_img {
+  position: relative;
+  width: 60px; /* Ajusta el tamaño según tu necesidad */
+  height: 60px;
+  margin: 10px;
+  transition: transform 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+#Proyects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+.Proyects_container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px; /* límite en pantallas grandes */
+  padding: 0 20px;
+}
+
+.row {
+padding: 20px 0px;
+  display: flex;
+  justify-content: center;
+
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.proyect {
+  width: 100%;
+  max-width: 380px; /* límite máximo */
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  border-radius: 25px;
+  padding: 10px;
+  position: relative;
+  margin: 10px;
+  transition: transform 0.3s ease;
+}
+
+
+
+.proyect_img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  height: 200px;
+
+}
+
+
+
+.extraProyects {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease, filter 0.6s ease;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px; /* límite en pantallas grandes */
+  padding: 0 20px;
+}
+
+
+
+.extraProyects.expanded {
+  max-height: 1400px; 
+
+}
+
+.button_container {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#showMoreBtn {
+  display: flex; /* Coloca los elementos en línea */
+  align-items: center; /* Centra verticalmente la imagen y el texto */
+  justify-content: center; /* Centra horizontalmente el contenido (opcional) */
+  background-color: #fff;
+  border-radius: 20px;
+  color: #000;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: inherit;
+  padding: 15px 20px;
+  border: none;
+  transition: 0.5s;
+  margin: 0px 40px;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+#showMoreBtn:hover {
+  transition: 0.3s;
+  background-color: #fff;
+  color: #000;
+  box-shadow: inset 0 0px 10px #22ff05, 0 0px 10px #22ff05;
+  filter: invert(1);
+}
+
+
+.divider_ability{
+  border: none; /* Elimina el borde por defecto */
+  height: 2px; /* Grosor de la línea */
+  background-color: #fff; /* Color de la línea */
+  margin: 10px 0; /* Espacio arriba y abajo */
+  width: 100%; /* Ancho de la línea */
+}
+
+.ability_title{
+  font-size: 15px;
+  font-weight: 900;
+  margin: 10px 0px;
+}
+
+
+.media-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.proyect_img,.proyect_video {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+
+  transition: opacity 0.4s ease;
+}
+
+/* Al inicio el video está oculto */
+.proyect_video {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Al hacer hover en el contenedor mostramos el video */
+.media-container:hover .proyect_video {
+  opacity: 1;
+}
+
+/* Y escondemos la imagen cuando el video se ve */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.info_proyect {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+
+.proyect_description {
+
+  color: #86868b;
+  margin-bottom: 10px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.ability_container {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+
+
+}
+
+.proyect_ability {
+  background-color: #222;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+}
+
+/* Efecto card glow */
+
+
+.card:hover::after {
+  filter: blur(30px);
+  transition: 0.4s;
+}
+
+
+.card::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
+  transition: 0.5s;
+}
+
+
+
+
+
+/* Degradado al final */
+.show-more-container {
+  position: relative;
+  margin-top: -80px; /* superpone el degradado al borde de los proyectos */
+  height: 140px; /* altura suficiente para el efecto */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+#Contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Definir el tamaño de la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 12px; /* Ancho de la barra de desplazamiento */
+  height: 12px; /* Altura de la barra de desplazamiento horizontal */
+}
+
+/* Definir el fondo de la pista de desplazamiento */
+::-webkit-scrollbar-track {
+  background-color: #000; /* Color de fondo de la pista */
+  border-radius: 10px; /* Bordes redondeados en la pista */
+}
+
+/* Definir el pulgar de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+  background-color: #fff; /* Color del pulgar */
+  border-radius: 10px; /* Bordes redondeados en el pulgar */
+  border: 2px solid #00172b; /* Borde del pulgar */
+}
+
+/* Definir el pulgar al pasar el mouse sobre él */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color del pulgar cuando el mouse pasa sobre él */
+}
+
+.highlight {
+  color: #ffffff; /* Color blanco solo para "QA Tester" */
+}
+
+.white_text {
+  color: #fff;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 900px) {
+  .about_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 20px;
+  }
+
+  .about_text {
+    margin: 20px 0; /* Reduce el margen para que quede más compacto */
+    text-align: left; /* Opcional, para centrar el texto */
+    color: #86868b;
+    max-width: 300px;
+  }
+
+  #About {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+    z-index: 0; /* Asegura que el contenido está por encima del pseudo-elemento */
+  }
+
+  #Skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+    z-index: 0; /* Asegura que el contenido está por encima del pseudo-elemento */
+  }
+
+  .divider {
+    display: none; /* Oculta la línea en pantallas pequeñas */
+  }
+
+  .flecha {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%); /* Centra el contenedor horizontalmente */
+    cursor: pointer;
+    display: inline-block; /* Hace que el enlace envuelva a la imagen */
+  }
+}
+
+@media (max-width: 1000px) {
+  .info_container {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .info {
+    font-size: 30px;
+    margin: 0px 30px;
+  }
+
+  .name {
+    font-size: 50px;
+    margin: 0px 20px;
+  }
+
+  .navegacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+  }
+
+  .descarga_cv {
+    margin: 30px 0px;
+  }
+
+  .container_main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .background_title {
+    font-size: 100px;
+  }
+
+  .img {
+    margin: 0;
+  }
+
+  .descarga_cv {
+    width: 200px;
+    height: 50px;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    margin: 5px 0;
+  }
+
+  .skills_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 20px;
+  }
+
+  .experience_box {
+    margin: 20px 0px;
+  }
+
+  .experience {
+    max-width: 350px;
+    color: #86868b;
+  }
+}
+
+@media (max-width: 833px) {
+  .navbar {
+    justify-content: space-between;
+    background-color: transparent;
+  }
+
+  .item {
+    display: none;
+    transition: opacity 0.5s, transform 0.5s, visibility 0.5s;
+  }
+
+  .navbar img {
+    margin: 12px;
+  }
+
+  .hamburger {
+    display: flex;
+    justify-content: right;
+    margin: 0px 17px;
+    position: fixed;
+    right: 0px;
+  }
+
+  .item-show {
+    display: block;
+    margin: 0px 20px;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 3px 28px 4px;
+    transition: 0.5s;
+    color: rgb(232, 232, 237);
+    position: relative;
+  }
+
+  .menu-show {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    top: 49px;
+    width: 100%;
+    height: 2000px;
+    background-color: rgb(22, 22, 22);
+    transition: 0.7s;
+    position: fixed;
+    z-index: 1;
+  }
+
+  .logo-show {
+    display: none;
+    height: 25px;
+    margin: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .navbar-show {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-color: rgb(22, 22, 22);
+    color: rgb(232, 232, 237);
+    height: 50px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+  }
+
+
+
+  .line {
+    transition: 0.3s;
+  }
+
+  .hamburger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px);
+  }
+
+  .hamburger.active .line:nth-child(2) {
+    transform: rotate(-45deg) translate(5px);
+  }
+
+  .item,
+  .item-show,
+  .menu,
+  .menu-show,
+  .logo,
+  .logo-show,
+  .navbar,
+  .navbar-show {
+    transition: 0.5s;
+  }
+
+  .internal_link {
+    padding: 20px;
+  }
+
+  .skill_img {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+  }
+
+  .skills_box {
+    margin: 0px 0px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+  .Proyects_container {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .proyect {
+    max-width: 50%;
+  }
+
+/* Móviles */
+
+  .proyect {
+    max-width: 400px;
+  }
+
+
+
+
+
+
+  .proyect_ability {
+    font-size: 0.75rem;
+  }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(132, 0, 209, 0.288) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  filter: blur(60px);
+  mix-blend-mode: screen;
+  transition: all 0.1s ease-out; /* Suaviza el movimiento */
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+
+}
