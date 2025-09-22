@@ -1,12 +1,9 @@
 function toggleMenu() {
     const hamburger = document.querySelector('.hamburger');
     const menus = document.querySelectorAll('.item, .item-show, .menu, .menu-show, .logo, .logo-show, .navbar, .navbar-show');
-    const body = document.body;  // Obtener el body
-  
-    // Alterna la clase activa en el botón de menú
+    const body = document.body;  
+    
     hamburger.classList.toggle('active');
-  
-    // Alterna las clases de los elementos del menú con transición
     menus.forEach(menu => {
       ['item', 'menu', 'logo', 'navbar'].forEach(baseClass => {
         if (menu.classList.contains(baseClass)) {
@@ -18,8 +15,6 @@ function toggleMenu() {
         }
       });
     });
-  
-    // Bloquear o permitir el scroll en el body
     body.classList.toggle('no-scroll');
 
     menus.forEach(menu => {
@@ -60,11 +55,6 @@ function toggleMenu() {
     body.classList.remove('no-scroll');
 }
 
-
-
-
-
-
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -78,7 +68,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
-
 
 function smoothScrollTo(target, duration) {
   const startPosition = window.pageYOffset;
@@ -94,7 +83,6 @@ function smoothScrollTo(target, duration) {
       requestAnimationFrame(animation);
     }
   }
-
   requestAnimationFrame(animation);
 }
 
@@ -129,7 +117,6 @@ window.addEventListener('wheel', function(e) {
     isScrolling = true;
     smoothScroll();
   }
-
   scrollDirection = e.deltaY > 0 ? 1 : -1;
   scrollSpeed += scrollDirection * 10;
   e.preventDefault();
@@ -265,7 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const link = document.createElement('a');
     link.href = "{{ url_for('static', filename='documents/CV_Samuel_Gomez_Restrepo.pdf') }}";
     link.download = "CV_Samuel_Gomez_Restrepo.pdf";
-    document.body.appendChild(link);  // 🔑 lo metemos al DOM
-    link.click();                      // 🔑 disparamos el click
-    document.body.removeChild(link);   // 🔑 limpiamos
+    document.body.appendChild(link); 
+    link.click();
+    document.body.removeChild(link);  
   });
