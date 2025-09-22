@@ -245,9 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-
-
   document.querySelector('.descarga_cv').addEventListener('click', () => {
     const link = document.createElement('a');
     link.href = "{{ url_for('static', filename='documents/CV_Samuel_Gomez_Restrepo.pdf') }}";
