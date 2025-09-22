@@ -67,37 +67,25 @@ a {
 .item a {
   text-decoration: none;
   color: inherit;
-  /* El texto hereda el color del elemento .item */
   display: inline-block;
-  /* Esto ayuda a centrar correctamente el pseudo-elemento */
 }
 
 .item a::after {
   content: "";
-  /* Es necesario para generar el pseudo-elemento */
   position: absolute;
   bottom: 0;
-  /* Coloca la barra en la parte inferior del enlace */
   left: 50%;
-  /* Inicia desde el centro */
   transform: translateX(-50%) scaleX(0);
-  /* Oculto por defecto */
   transform-origin: center;
-  /* Centro como punto de origen */
   width: 100%;
-  /* Ancho de la barra */
   height: 2px;
-  /* Grosor de la barra */
   background-color: rgb(255, 255, 255);
-  /* Color de la barra */
   transition: transform 0.2s ease;
-  /* Animación suave */
   margin-bottom: -2px;
 }
 
 .item a:hover::after {
   transform: translateX(-50%) scaleX(1);
-  /* Barra visible y expandida */
 }
 
 .hamburger {
@@ -137,12 +125,8 @@ a {
 
 .name {
   background: linear-gradient(90deg, #d613e7, #8b51f5);
-  /* Gradiente */
   -webkit-background-clip: text;
-  /* Clip para fondo del texto */
   -webkit-text-fill-color: transparent;
-  /* Fondo del texto transparente */
-
   font-size: 90px;
 }
 
@@ -151,10 +135,8 @@ a {
   height: 300px;
   width: 300px;
   display: inline-block;
-  /* Opcional, para ajustar el tamaño al contenido */
   animation: breathe 2s ease-in-out infinite;
   border-radius: 50%;
-
   padding: 10px;
   border: 5px solid #fff;
 }
@@ -163,25 +145,19 @@ a {
 
   0%,
   100% {
-    transform: translateY(0);
-    /* Posición inicial y final */
+    transform: translateY(0);  
   }
 
   50% {
     transform: translateY(-20px);
-    /* Mueve hacia arriba */
   }
 }
 
 .redes {
   display: flex;
-  /* Alinea los íconos en una fila */
   flex-wrap: nowrap;
-  /* Evita que los elementos se envuelvan en varias filas */
   justify-content: center;
-  /* Centra los íconos horizontalmente */
   gap: 10px;
-  /* Espaciado entre los íconos */
   margin: 0px 40px;
 }
 
@@ -217,28 +193,21 @@ a {
 .info_container {
   display: flex;
   justify-content: center;
-  /* Centra los elementos horizontalmente */
   align-items: center;
-  /* Centra los elementos verticalmente */
   flex-direction: column;
   max-width: 640px;
 }
 
 .icon_cv {
   width: 30px;
-  /* Ajusta el tamaño de la imagen según sea necesario */
   height: 30px;
   margin-right: 10px;
-  /* Espacio entre la imagen y el texto */
 }
 
 .descarga_cv {
   display: flex;
-  /* Coloca los elementos en línea */
   align-items: center;
-  /* Centra verticalmente la imagen y el texto */
   justify-content: center;
-  /* Centra horizontalmente el contenido (opcional) */
   background-color: #fff;
   border-radius: 20px;
   color: #000;
@@ -251,7 +220,6 @@ a {
   transition: 0.5s;
   margin: 0px 40px;
   white-space: nowrap;
-  /* Evita que el texto se divida en varias líneas */
 }
 
 .descarga_cv:hover {
@@ -282,16 +250,13 @@ a {
   align-items: center;
 }
 
-/* Establecer el estilo inicial (fuera de pantalla) */
 .animate-item {
   opacity: 0;
   transform: translateY(30px);
-  /* Colocar el elemento fuera de la pantalla */
   transition: opacity 1s, transform 2s;
-  /* Asegurar la transición cuando se active la animación */
 }
 
-/* Definir la animación bounceInUp */
+
 .bounceInUp {
   opacity: 1;
   transform: translateY(0);
@@ -302,17 +267,14 @@ a {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  /* Centra el contenedor horizontalmente */
   cursor: pointer;
   display: inline-block;
-  /* Hace que el enlace envuelva a la imagen */
 }
 
 .flecha img {
   width: 40px;
   height: auto;
   filter: invert(1);
-  /* Sigue aplicando el filtro */
   animation: bounce 1.5s infinite;
 }
 
@@ -333,13 +295,10 @@ a {
   flex-direction: column;
   align-items: center;
   padding: 140px 0px;
-
   justify-content: center;
-
   position: relative;
   overflow: hidden;
   z-index: 0;
-  /* Asegura que el contenido está por encima del pseudo-elemento */
 }
 
 .sub_title {
@@ -348,20 +307,14 @@ a {
   font-weight: 700;
   text-align: center;
   background: linear-gradient(90deg, #d613e7, #8b51f5);
-  /* Gradiente */
   -webkit-background-clip: text;
-  /* Clip para fondo del texto */
   -webkit-text-fill-color: transparent;
-  /* Fondo del texto transparente */
 }
 
 .divider {
   width: 2px;
-  /* Grosor de la línea */
   background: #ccc;
-  /* Color de la línea */
   height: 250px;
-  /* Altura completa del contenedor */
 }
 
 .about_container {
@@ -380,9 +333,7 @@ a {
   text-align: left;
   line-height: 25px;
   color: #86868b;
-  /* Color general del texto */
   display: block;
-  /* Esto asegura que el texto fluya normalmente */
 }
 
 .skill_img {
@@ -404,10 +355,8 @@ a {
 
 .slice::after {
   content: attr(data-label);
-  /* Ahora usa data-label en lugar de alt */
   position: absolute;
   bottom: 20px;
-  /* Ajusta la posición debajo de la imagen */
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
@@ -428,9 +377,6 @@ a {
   z-index: 1;
 }
 
-
-
-
 #Skills {
   display: flex;
   flex-direction: column;
@@ -440,7 +386,6 @@ a {
   position: relative;
   overflow: hidden;
   z-index: 0;
-  /* Asegura que el contenido está por encima del pseudo-elemento */
 }
 
 .skills_container {
@@ -488,19 +433,10 @@ a {
 .skill_img {
   position: relative;
   width: 60px;
-  /* Ajusta el tamaño según tu necesidad */
   height: 60px;
   margin: 10px;
   transition: transform 0.3s ease;
 }
-
-
-
-
-
-
-
-
 
 #Proyects {
   display: flex;
@@ -512,12 +448,7 @@ a {
   height: 100vh;
 }
 
-
-
-
-
 .proyect_description {
-
   color: #86868b;
   margin-bottom: 10px;
   font-size: 17px;
@@ -528,8 +459,6 @@ a {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-
-
 }
 
 .proyect_ability {
@@ -540,14 +469,10 @@ a {
   font-size: 0.875rem;
 }
 
-/* Efecto card glow */
-
-
 .card:hover::after {
   filter: blur(30px);
   transition: 0.4s;
 }
-
 
 .card::after {
   content: "";
@@ -560,29 +485,16 @@ a {
   transition: 0.5s;
 }
 
-
-
-
-
-/* Degradado al final */
 .show-more-container {
   position: relative;
   margin-top: -80px;
-  /* superpone el degradado al borde de los proyectos */
   height: 140px;
-  /* altura suficiente para el efecto */
   display: flex;
   justify-content: center;
   align-items: flex-end;
   z-index: 1;
   width: 100%;
 }
-
-
-
-
-
-
 
 #Contact {
   display: flex;
@@ -662,83 +574,46 @@ a {
   box-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
 }
 .general-error-message {
-  color: #ff6347; /* Color del texto de error */
+  color: #ff6347;
   font-size: 0.8rem;
   text-align: center;
   margin-bottom: 10px;
-  display: none; /* Oculto por defecto */
+  display: none;
 }
 
 .input_field.error {
-  border-color: #ff6347; /* Borde rojo para los campos con error */
+  border-color: #ff6347;
   box-shadow: 0 0 20px rgba(255, 99, 71, 0.5);
 }
 
-
-
-
-
-/* Definir el tamaño de la barra de desplazamiento */
 ::-webkit-scrollbar {
   width: 12px;
-  /* Ancho de la barra de desplazamiento */
   height: 12px;
-  /* Altura de la barra de desplazamiento horizontal */
 }
 
-/* Definir el fondo de la pista de desplazamiento */
 ::-webkit-scrollbar-track {
   background-color: #000;
-  /* Color de fondo de la pista */
   border-radius: 10px;
-  /* Bordes redondeados en la pista */
 }
 
-/* Definir el pulgar de la barra de desplazamiento */
 ::-webkit-scrollbar-thumb {
   background-color: #fff;
-  /* Color del pulgar */
   border-radius: 10px;
-  /* Bordes redondeados en el pulgar */
   border: 2px solid #00172b;
-  /* Borde del pulgar */
 }
 
-/* Definir el pulgar al pasar el mouse sobre él */
 ::-webkit-scrollbar-thumb:hover {
   background-color: #555;
-  /* Color del pulgar cuando el mouse pasa sobre él */
 }
 
 .highlight {
   color: #ffffff;
-  /* Color blanco solo para "QA Tester" */
 }
 
 .white_text {
   color: #fff;
   font-weight: 700;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @media screen and (max-width: 900px) {
@@ -751,9 +626,7 @@ a {
 
   .about_text {
     margin: 20px 0;
-    /* Reduce el margen para que quede más compacto */
     text-align: left;
-    /* Opcional, para centrar el texto */
     color: #86868b;
     max-width: 300px;
   }
@@ -763,13 +636,11 @@ a {
     flex-direction: column;
     align-items: center;
     padding: 0px;
-
     justify-content: center;
-
     position: relative;
     overflow: hidden;
     z-index: 0;
-    /* Asegura que el contenido está por encima del pseudo-elemento */
+
   }
 
   #Skills {
@@ -777,18 +648,14 @@ a {
     flex-direction: column;
     align-items: center;
     padding: 0px;
-
     justify-content: center;
-
     position: relative;
     overflow: hidden;
     z-index: 0;
-    /* Asegura que el contenido está por encima del pseudo-elemento */
   }
 
   .divider {
     display: none;
-    /* Oculta la línea en pantallas pequeñas */
   }
 
   .flecha {
@@ -796,10 +663,22 @@ a {
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    /* Centra el contenedor horizontalmente */
     cursor: pointer;
     display: inline-block;
-    /* Hace que el enlace envuelva a la imagen */
+
+  }
+    .contact_form {
+    width: 100%;
+    align-items: center;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .small_input {
+    width: 100%;
   }
 }
 
@@ -998,7 +877,6 @@ a {
     filter: blur(60px);
     mix-blend-mode: screen;
     transition: all 0.1s ease-out;
-    /* Suaviza el movimiento */
   }
 
   .content {
