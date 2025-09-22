@@ -21,19 +21,16 @@ function toggleMenu() {
   
     // Bloquear o permitir el scroll en el body
     body.classList.toggle('no-scroll');
-    
-    // Aplicar transición de cierre al men
+
     menus.forEach(menu => {
       if (menu.classList.contains('item-show')) {
         menu.addEventListener('click', () => {
-          // Cierra el menú al seleccionar un título
           closeMenu();
         });
       }
     });
   }
-  
-  // Cerrar el menú y restaurar clases con transición
+
   const links = document.querySelectorAll('.navbar a');
   links.forEach(link => {
     link.addEventListener('click', () => {
@@ -61,45 +58,28 @@ function toggleMenu() {
     hamburger.classList.remove('active');
   
     body.classList.remove('no-scroll');
-  }
-  
-
-  document.querySelector('.descarga_cv').addEventListener('click', () => {
-    const link = document.createElement('a');
-    link.href = 'documents/CV Samuel Gómez Restrepo.pdf'; 
-    link.download = 'CV Samuel Gómez Restrepo.pdf'; 
-    link.click();
-  });
+}
 
 
 
 
 
 
-
-
-
-
-// Seleccionar todos los enlaces con href que apuntan a un id
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+    e.preventDefault();
 
-    // Obtener el id del destino desde el href
     const targetId = this.getAttribute('href').substring(1);
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      // Obtener la posición superior del destino
       const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-
-      // Llamar a la función de animación para desplazarse
-      smoothScrollTo(targetPosition, 500); // 500ms de duración
+      smoothScrollTo(targetPosition, 500);
     }
   });
 });
 
-// Función de desplazamiento suave
+
 function smoothScrollTo(target, duration) {
   const startPosition = window.pageYOffset;
   const distance = target - startPosition;
@@ -107,17 +87,9 @@ function smoothScrollTo(target, duration) {
 
   function animation(currentTime) {
     if (!startTime) startTime = currentTime;
-
-    // Calcular el tiempo transcurrido
     const timeElapsed = currentTime - startTime;
-
-    // Aplicar una función de facilidad para suavizar el desplazamiento
     const ease = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-
-    // Desplazar la ventana
     window.scrollTo(0, ease);
-
-    // Continuar la animación si aún no ha terminado
     if (timeElapsed < duration) {
       requestAnimationFrame(animation);
     }
@@ -126,7 +98,6 @@ function smoothScrollTo(target, duration) {
   requestAnimationFrame(animation);
 }
 
-// Función de facilidad (ease-in-out)
 function easeInOutQuad(t, b, c, d) {
   t /= d / 2;
   if (t < 1) return (c / 2) * t * t + b;
@@ -134,53 +105,23 @@ function easeInOutQuad(t, b, c, d) {
   return (-c / 2) * (t * (t - 2) - 1) + b;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let isScrolling = false;
 let scrollSpeed = 0;
-let friction = 0.05; // Controla la cantidad de fricción
-let scrollDirection = 0; // Dirección del scroll
-let targetPosition = 0; // La posición a la que queremos llegar
+let friction = 0.05;
+let scrollDirection = 0; 
+let targetPosition = 0;
 
-// Función que actualiza la posición de desplazamiento con fricción
 function smoothScroll() {
   if (Math.abs(scrollSpeed) < 0.1) {
-    isScrolling = false; // Detener cuando la velocidad es baja
+    isScrolling = false; 
     scrollSpeed = 0;
   }
-
-  // Si estamos desplazándonos, actualizar la posición
   if (isScrolling) {
-    // Aplicar la fricción
     scrollSpeed *= (1 - friction);
-
-    // Desplazar la ventana según la velocidad
     window.scrollBy(0, scrollSpeed);
-
-    // Llamar recursivamente para continuar el movimiento
     requestAnimationFrame(smoothScroll);
   }
 }
-
-
-
-
-
-
-
-
 
 
 window.addEventListener('wheel', function(e) {
@@ -192,147 +133,81 @@ window.addEventListener('wheel', function(e) {
   scrollDirection = e.deltaY > 0 ? 1 : -1;
   scrollSpeed += scrollDirection * 10;
   e.preventDefault();
-}, { passive: false }); // Desactivar passive aquí
+}, { passive: false }); 
 
-
-
-
-
-
-
-
-
-
-
-
-const baseText = "I am a full stack dev but also a "; // Parte fija del texto
+const baseText = "I am a full stack dev but also a ";
 const textArray = [
   "QA tester",
-  "gamer",
-  "pro",
-  "genius"
+  "Gamer",
+  "Pro",
+  "Genius"
 ];
 
 let currentTextIndex = 0;
 let currentLetterIndex = 0;
 let isDeleting = false;
-const typingSpeed = 100; // Velocidad de escritura
-const deletingSpeed = 50; // Velocidad de borrado
-const pauseBetweenChanges = 3000; // Pausa de 4 segundos entre cambios de palabra
-
+const typingSpeed = 100; 
+const deletingSpeed = 40; 
+const pauseBetweenChanges = 1000; 
 const infoElement = document.querySelector('.info');
 
-// Función que maneja el efecto de escritura y borrado
 function typeAndDelete() {
-  // Solo escribimos y borramos la parte dinámica (textArray)
-  const currentText = baseText + textArray[currentTextIndex]; // Combina el texto fijo con la palabra actual
+  const currentText = baseText + textArray[currentTextIndex];
 
   if (isDeleting) {
-    // Borrar el texto dinámico
-    if (currentLetterIndex > baseText.length) { // Solo borra después del baseText
+
+    if (currentLetterIndex > baseText.length) { 
       currentLetterIndex--;
       infoElement.textContent = currentText.substring(0, currentLetterIndex);
     } else {
       // Cambiar de frase
       isDeleting = false;
       currentTextIndex = (currentTextIndex + 1) % textArray.length;
-      // Pausa antes de empezar a escribir de nuevo
-      setTimeout(typeAndDelete, pauseBetweenChanges); // Pausa entre frases
-      return; // Termina la iteración actual
+      setTimeout(typeAndDelete, pauseBetweenChanges);
+      return;
     }
   } else {
-    // Escribir el texto dinámico
     if (currentLetterIndex < currentText.length) {
       currentLetterIndex++;
       infoElement.textContent = currentText.substring(0, currentLetterIndex);
     } else {
-      // Cuando termina de escribir, empezar a borrar después de una pausa
       setTimeout(() => {
         isDeleting = true;
         typeAndDelete();
-      }, pauseBetweenChanges); // Pausa antes de borrar
+      }, pauseBetweenChanges); 
       return;
     }
   }
-
-  // Continuar la animación
   setTimeout(typeAndDelete, isDeleting ? deletingSpeed : typingSpeed);
 }
-
-// Iniciar el efecto de escritura y borrado
 typeAndDelete();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Crear un IntersectionObserver
   const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
           if (entry.isIntersecting) {
-              // Cuando el elemento entra en la vista, añadir la clase para activar la animación
               entry.target.classList.add('bounceInUp');
-              // Dejar de observar el elemento después de que la animación se haya disparado
               observer.unobserve(entry.target);
           }
       });
-  }, { threshold: 0.5 }); // 0.5 significa que el 50% del elemento debe estar en la vista para activarse
-
-  // Observar todos los elementos con la clase .animate-item
+  }, { threshold: 0.5 });
   const elements = document.querySelectorAll('.animate-item');
   elements.forEach(element => observer.observe(element));
 });
 
 
-
-
-
-
-
 const proyectCards = document.querySelectorAll('.media-container');
-
 proyectCards.forEach(container => {
   const video = container.querySelector('.proyect_video');
-
   container.addEventListener('mouseenter', () => {
-    video.currentTime = 0; // Empieza desde el inicio (opcional)
+    video.currentTime = 0;
     video.play();
   });
-
   container.addEventListener('mouseleave', () => {
     video.pause();
   });
 });
-
-
-
-
-
 
 function toggleProjects() {
   const extraProyects = document.getElementById('extraProyects');
@@ -347,13 +222,50 @@ function toggleProjects() {
   }
 }
 
-
-
-
-
 const glow = document.querySelector('.glow');
-
-document.addEventListener('mousemove', (e) => {
-  glow.style.left = `${e.clientX}px`;
-  glow.style.top = `${e.clientY}px`;
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector(".contact_form");
+  const generalErrorMessage = form.querySelector(".general-error-message");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let formValid = true;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const inputs = form.querySelectorAll('.input_field');
+    inputs.forEach(input => {
+      if (input.value.trim() === "") {
+        input.classList.add("error");
+        formValid = false;
+      } else {
+        if (input.getAttribute('name') === 'email') {
+          if (!emailPattern.test(input.value)) {
+            input.classList.add("error");
+            formValid = false;
+          } else {
+            input.classList.remove("error");
+          }
+        } else {
+          input.classList.remove("error");
+        }
+      }
+    });
+    if (!formValid) {
+      generalErrorMessage.textContent = "Por favor, completa todos los campos correctamente.";
+      generalErrorMessage.style.display = "block";
+    } else {
+      generalErrorMessage.style.display = "none";
+      form.submit();
+    }
+  });
 });
+
+
+
+
+  document.querySelector('.descarga_cv').addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = "{{ url_for('static', filename='documents/CV_Samuel_Gomez_Restrepo.pdf') }}";
+    link.download = "CV_Samuel_Gomez_Restrepo.pdf";
+    document.body.appendChild(link);  // 🔑 lo metemos al DOM
+    link.click();                      // 🔑 disparamos el click
+    document.body.removeChild(link);   // 🔑 limpiamos
+  });

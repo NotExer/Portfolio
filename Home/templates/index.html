@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="I'm NotExer a front back developer and QA tester]. Explore my projects, discover my skills and contact me to collaborate on innovative ideas. Visit my github page!" />
+    <title>NotExer</title>
+    <link rel="icon" type="image/png" href="static/img/icon.webp" />
+    <link rel="stylesheet" href="static/styles.css" />
+</head>
+<header>
+    <nav class="navbar">
+        <img src="static/img/Logo.webp" class="logo" alt="logo" />
+        <ul class="menu">
+            <li class="item"><a href="#Home">Home</a></li>
+            <li class="item"><a href="#About">About me</a></li>
+            <li class="item"><a href="#Skills">Skills</a></li>
+            <li class="item"><a href="#Proyects">Projects</a></li>
+            <li class="item"><a href="#Contact">Contact</a></li>
+        </ul>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <section id="Home">
+        <div class="container_main">
+            <div class="info_container">
+                <div class="informacion">
+                    <h1 class="name animate-item">Hi I'm NotExer</h1>
+                    <p class="info animate-item">I am a full stack dev but also a</p>
+                </div>
+
+                <div class="navegacion">
+<a href="{{ url_for('static', filename='documents/CV_Samuel_Gomez_Restrepo.pdf') }}" 
+   download="CV_Samuel_Gomez_Restrepo.pdf" 
+   class="descarga_cv animate-item">
+  <img src="{{ url_for('static', filename='img/Download.webp') }}" 
+       alt="download_cv" 
+       class="icon_cv" />
+  Download CV
+</a>
+
+
+                    <div class="redes">
+                        <a href="https://www.linkedin.com/in/samuel-gomez-restrepo-717238191/" target="_blank"
+                            aria-label="LinkedIn">
+                            <img src="static/img/linkedin.webp" class="icon animate-item" alt="Logo de LinkedIn" />
+                        </a>
+                        <a href="https://github.com/NotExer" target="_blank" aria-label="GitHub">
+                            <img src="static/img/github.webp" class="icon animate-item" alt="Logo de GitHub" />
+                        </a>
+                        <a href="https://discord.gg/WuFJPusGE9" target="_blank" aria-label="Discord">
+                            <img src="static/img/discord.webp" class="icon animate-item" alt="Logo de Discord" />
+                        </a>
+                        <a href="https://www.instagram.com/not_exer/" target="_blank" aria-label="Instagram">
+                            <img src="static/img/instagram.webp" class="icon animate-item" alt="Logo de Instagram" />
+                        </a>
+                        <a href="https://x.com/Not_Exer" target="_blank" aria-label="Twitter">
+                            <img src="static/img/X.webp" class="icon animate-item" alt="Logo de Twitter" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <img src="static/img/icon.webp" class="img" alt="image" />
+            </div>
+        </div>
+
+        <a href="#About" class="flecha animate-item">
+            <img src="static/img/Flecha.webp" alt="flecha" />
+        </a>
+    </section>
+
+    <section id="About">
+        <h2 class="sub_title animate-item">About me</h2>
+
+        <div class="about_container">
+            <p class="about_text animate-item">
+                I am a <span class="white_text">QA Tester </span>with experience in
+                web testing, ensuring the quality of applications before their
+                release. I specialize in creating test cases,<span class="white_text">
+                    identifying and reporting errors,</span>
+                and collaborating with development teams to optimize products. I have
+                worked with large companies, ensuring that their products are
+                functional, efficient, and bug-free before reaching end users.
+            </p>
+            <hr class="divider" />
+            <p class="about_text animate-item">
+                I excel in implementing
+                <span class="white_text">agile methodologies,</span> ensuring fluid
+                communication between testers and developers. I have experience in
+                <span class="white_text">functional, regression and automation testing, </span>as well as interacting with
+                clients to understand their needs and
+                improve usability. My goal is to elevate software quality through
+                rigorous testing and a proactive approach to problem solving.
+            </p>
+        </div>
+        <a href="#Skills" class="flecha animate-item">
+            <img src="static/img/Flecha.webp" alt="flecha" />
+        </a>
+    </section>
+
+    <section id="Skills">
+        <h2 class="sub_title animate-item">Skills and experiences</h2>
+
+        <div class="skills_container">
+            <div class="experience_box animate-item">
+                <h3 class="experience_title animate-item">Experience</h3>
+                <div class="experience_container animate-item">
+                    <h4 class="experience_subtitle animate-item">
+                        QA Tester - Webhelp
+                    </h4>
+                    <h4 class="experience_subtitle animate-item">2023-2024</h4>
+                    <p class="experience">
+                        During my time at Webhelp, I had the opportunity to work as a QA Tester, where I gained
+                        experience in
+                        software testing and quality assurance in web, mobile and telephony environments.
+                    </p>
+                </div>
+                <div class="experience_container animate-item">
+                    <h4 class="experience_subtitle animate-item">
+                        Developer - Agencias nacionales
+                    </h4>
+                    <h4 class="experience_subtitle animate-item">2025-Currently</h4>
+                    <p class="experience">
+                        In my current role, I work as a Programmer and Data Analyst, leveraging automation tools and
+                        artificial intelligence to solve complex problems and drive the company's sales growth.
+                    </p>
+                </div>
+            </div>
+
+            <div class="skills_box animate-item">
+                <h3 class="experience_title animate-item">Skills</h3>
+
+                <div class="skill_item animate-item">
+                    <h4 class="experience_subtitle animate-item">Tech skills</h4>
+                    <div class="skills_grid">
+                        <div class="slice" data-label="HTML">
+                            <img src="static/img/Html.webp" alt="HTML" class="skill_img" />
+                        </div>
+
+                        <div class="slice" data-label="CSS">
+                            <img src="static/img/Css.webp" alt="CSS" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="JavaScript">
+                            <img src="./static/img/Js.webp" alt="JavaScript" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="Bootstrap">
+                            <img src="static/img/Bootstrap.webp" alt="Bootstrap" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="Python">
+                            <img src="static/img/Python.webp" alt="Python" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="Selenium">
+                            <img src="static/img/Selenium.webp" alt="Selenium" class="skill_img animate-item" />
+                        </div>
+                        <div class="slice" data-label="Django">
+                            <img src="static/img/Django.webp" alt="Django" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="Postman">
+                            <img src="static/img/Postman.webp" alt="Postman" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="Mysql">
+                            <img src="static/img/Mysql.webp" alt="MySQL" class="skill_img animate-item" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill_item animate-item">
+                    <h4 class="experience_subtitle animate-item">Environments</h4>
+                    <div class="skills_grid animate-item">
+                        <div class="slice" data-label="Visual Studio Code">
+                            <img src="static/img/Vscode.webp" alt="VS Code" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="Jira">
+                            <img src="static/img/Jira.webp" alt="Jira" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="Azure">
+                            <img src="static/img/Azure.webp" alt="Azure" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="Amazon Web Services">
+                            <img src="static/img/Aws.webp" alt="AWS" class="skill_img animate-item" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill_item animate-item">
+                    <h4 class="experience_subtitle animate-item">Design Tools</h4>
+                    <div class="skills_grid">
+                        <div class="slice" data-label="Photoshop">
+                            <img src="static/img/Photoshop.webp" alt="Photoshop" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="Premiere Pro">
+                            <img src="static/img/PremierePro.webp" alt="Premiere Pro" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="Illustrator">
+                            <img src="static/img/Illustrator.webp" alt="Illustrator" class="skill_img animate-item" />
+                        </div>
+
+                        <div class="slice" data-label="Krita">
+                            <img src="static/img/Krita.webp" alt="Krita" class="skill_img animate-item" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="#Proyects" class="flecha animate-item">
+            <img src="static/img/Flecha.webp" alt="flecha" />
+        </a>
+    </section>
+
+    <section id="Proyects">
+        <h2 class="sub_title animate-item">Proyects</h2>
+
+        <h2 class="animate-item">Coming Soon</h2>
+
+        <a href="#Contact" class="flecha animate-item">
+            <img src="static/img/Flecha.webp" alt="flecha" />
+        </a>
+    </section>
+
+
+
+
+    <section id="Contact">
+        <h2 class="sub_title animate-item">Contact</h2>
+        <div class="contact_container">
+            <form action="/send" method="POST" class="contact_form animate-item" novalidate>
+
+                <div class="input-group">
+                    <div class="form-field">
+                        <input type="text" name="name" placeholder="Your Name" class="input_field small_input"
+                            required />
+                    </div>
+                    <div class="form-field">
+                        <input type="email" name="email" placeholder="Your Email" class="input_field small_input"
+                            required />
+                    </div>
+                </div>
+                <div class="form-field">
+                    <textarea name="message" rows="5" placeholder="Your Message" class="input_field big_input"
+                        required></textarea>
+                </div>
+                <span class="general-error-message"></span>
+                <button type="submit" class="animate-item bounceInU descarga_cv">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+<script src="./static/scripts.js"></script>
+
+</html>
