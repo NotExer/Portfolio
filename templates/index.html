@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="es" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
@@ -103,6 +103,14 @@
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+    [data-i18n], [data-i18n-placeholder] {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .lang-switching {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
   </style>
 </head>
 
@@ -118,17 +126,39 @@
       <img src="static/img/Logo.webp" class="h-6 invert opacity-80 hover:opacity-100 transition-opacity" alt="logo" />
       
       <ul class="hidden md:flex gap-8 text-[13px] font-semibold tracking-wider uppercase">
-        <li><a href="#Home" class="hover:text-midu-purple transition-colors">Home</a></li>
-        <li><a href="#About" class="hover:text-midu-purple transition-colors">About</a></li>
-        <li><a href="#Skills" class="hover:text-midu-purple transition-colors">Skills</a></li>
-        <li><a href="#Proyects" class="hover:text-midu-purple transition-colors">Projects</a></li>
-        <li><a href="#Contact" class="px-5 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all">Contact</a></li>
+        <li><a href="#Home" class="hover:text-midu-purple transition-colors" data-i18n="nav_home">Inicio</a></li>
+        <li><a href="#About" class="hover:text-midu-purple transition-colors" data-i18n="nav_about">Sobre mí</a></li>
+        <li><a href="#Skills" class="hover:text-midu-purple transition-colors" data-i18n="nav_skills">Habilidades</a></li>
+        <li><a href="#Proyects" class="hover:text-midu-purple transition-colors" data-i18n="nav_projects">Proyectos</a></li>
+        <li><a href="#Contact" class="px-5 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all" data-i18n="nav_contact">Contacto</a></li>
       </ul>
 
-      <!-- Mobile Menu Toggle -->
-      <button class="md:hidden text-white" onclick="toggleMobileMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-      </button>
+      <div class="flex items-center gap-3">
+        <button onclick="toggleLang()" class="flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all text-xs font-bold uppercase tracking-wider">
+          <span id="lang-label">EN</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu" class="md:hidden overflow-hidden transition-all duration-500 ease-in-out bg-black/90 backdrop-blur-xl border-t border-white/5" style="max-height: 0px;">
+      <ul class="flex flex-col items-center gap-4 py-6 text-[13px] font-semibold tracking-wider uppercase">
+        <li><a href="#Home" onclick="toggleMobileMenu()" class="hover:text-midu-purple transition-colors" data-i18n="nav_home">Inicio</a></li>
+        <li><a href="#About" onclick="toggleMobileMenu()" class="hover:text-midu-purple transition-colors" data-i18n="nav_about">Sobre mí</a></li>
+        <li><a href="#Skills" onclick="toggleMobileMenu()" class="hover:text-midu-purple transition-colors" data-i18n="nav_skills">Habilidades</a></li>
+        <li><a href="#Proyects" onclick="toggleMobileMenu()" class="hover:text-midu-purple transition-colors" data-i18n="nav_projects">Proyectos</a></li>
+        <li><a href="#Contact" onclick="toggleMobileMenu()" class="px-5 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all" data-i18n="nav_contact">Contacto</a></li>
+        <li>
+          <button onclick="toggleLang()" class="flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all text-xs font-bold uppercase tracking-wider">
+            <span id="lang-label-mobile">ES</span>
+          </button>
+        </li>
+      </ul>
     </div>
   </nav>
 
@@ -141,21 +171,22 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-midu-purple opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-midu-purple"></span>
           </span>
-          Available for new projects
+          <span data-i18n="hero_available">Disponible para nuevos proyectos</span>
         </div>
         
         <h1 class="text-5xl lg:text-7xl font-bold tracking-tight">
-          Hi I'm <span class="text-gradient-midu glow-purple">NotExer</span>
+          <span data-i18n="hero_greeting_1">Hola soy Samuel Gómez</span><br>
+          <span class="text-2xl lg:text-3xl text-gray-400 font-medium" data-i18n="hero_greeting_2">más conocido como </span><span class="text-2xl lg:text-3xl text-gradient-midu glow-purple">NotExer</span>
         </h1>
         
-        <p id="typing-text" class="text-xl lg:text-3xl text-gray-400 font-medium h-8 border-l-4 border-midu-purple pl-4"></p>
+        <p id="typing-text" class="text-sm lg:text-xl text-gray-400 font-medium min-h-[2rem] border-l-4 border-midu-purple pl-4 whitespace-nowrap"></p>
         
         <div class="flex flex-wrap items-center gap-6">
           <a href="{{ url_for('static', filename='documents/CV_Samuel_Gomez_Restrepo.pdf') }}" 
              download="CV_Samuel_Gomez_Restrepo.pdf" 
              class="btn-futuristic flex items-center gap-3">
             <img src="static/img/Download.webp" class="w-5 h-5" alt="Download" />
-            Download CV
+            <span data-i18n="hero_download">Descargar CV</span>
           </a>
           
           <div class="flex items-center gap-4">
@@ -175,7 +206,7 @@
       <div class="flex-1 flex justify-center reveal">
         <div class="relative w-64 h-64 lg:w-96 lg:h-96">
           <div class="absolute inset-0 bg-midu-purple/20 blur-[60px] rounded-full animate-pulse"></div>
-          <img src="static/img/icon.webp" class="relative z-10 w-full h-full object-cover rounded-[40px] border-2 border-white/10 animate-float shadow-2xl shadow-purple-500/20" alt="NotExer" />
+          <img src="static/img/Yo.webp" class="relative z-10 w-full h-full object-cover rounded-[40px] border-2 border-white/10 animate-float shadow-2xl shadow-purple-500/20" alt="NotExer" />
         </div>
       </div>
     </section>
@@ -183,19 +214,19 @@
     <!-- About Section -->
     <section id="About" class="max-w-4xl mx-auto py-32 space-y-12 reveal">
       <div class="flex items-center gap-4">
-        <h2 class="text-3xl lg:text-4xl font-bold uppercase tracking-widest text-gradient-midu">About me</h2>
+        <h2 class="text-3xl lg:text-4xl font-bold uppercase tracking-widest text-gradient-midu" data-i18n="about_title">Sobre mí</h2>
         <div class="h-[1px] flex-1 bg-white/10"></div>
       </div>
       
       <div class="grid md:grid-cols-2 gap-12">
         <div class="p-8 bg-white/[0.03] border border-white/5 rounded-[32px] hover:border-midu-purple/30 transition-colors">
-          <p class="text-lg leading-relaxed text-gray-400">
-            I am a <span class="text-white font-bold">QA Tester</span> with experience in web testing, ensuring the quality of applications before their release. I specialize in creating test cases, <span class="text-midu-purple font-semibold">identifying and reporting errors</span>, and collaborating with development teams to optimize products. I have worked with large companies, ensuring that their products are functional, efficient, and bug-free before reaching end users.
+          <p class="text-lg leading-relaxed text-gray-400" data-i18n="about_p1">
+            Soy un <span class="text-white font-bold">QA Tester</span> con experiencia en pruebas web, asegurando la calidad de las aplicaciones antes de su lanzamiento. Me especializo en crear casos de prueba, <span class="text-midu-purple font-semibold">identificar y reportar errores</span>, y colaborar con equipos de desarrollo para optimizar productos. He trabajado con grandes empresas, asegurando que sus productos sean funcionales, eficientes y libres de errores antes de llegar a los usuarios finales.
           </p>
         </div>
         <div class="p-8 bg-white/[0.03] border border-white/5 rounded-[32px] hover:border-midu-blue/30 transition-colors">
-          <p class="text-lg leading-relaxed text-gray-400">
-            I excel in implementing <span class="text-white font-bold">agile methodologies</span>, ensuring fluid communication between testers and developers. I have experience in <span class="text-midu-blue font-semibold">functional, regression and automation testing</span>, as well as interacting with clients to understand their needs and improve usability. My goal is to elevate software quality through rigorous testing and a proactive approach to problem solving.
+          <p class="text-lg leading-relaxed text-gray-400" data-i18n="about_p2">
+            Destaco en la implementación de <span class="text-white font-bold">metodologías ágiles</span>, asegurando una comunicación fluida entre testers y desarrolladores. Tengo experiencia en <span class="text-midu-blue font-semibold">pruebas funcionales, de regresión y automatización</span>, así como en la interacción con clientes para entender sus necesidades y mejorar la usabilidad. Mi objetivo es elevar la calidad del software a través de pruebas rigurosas y un enfoque proactivo en la resolución de problemas.
           </p>
         </div>
       </div>
@@ -204,8 +235,8 @@
     <!-- Skills and Experiences -->
     <section id="Skills" class="max-w-6xl mx-auto py-32 space-y-24">
       <div class="text-center space-y-4 reveal">
-        <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter">Skills & <span class="text-gradient-midu">Experience</span></h2>
-        <p class="text-gray-500 font-medium">My professional journey and technical arsenal</p>
+        <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter"><span data-i18n="skills_title_1">Habilidades & </span><span class="text-gradient-midu" data-i18n="skills_title_2">Experiencia</span></h2>
+        <p class="text-gray-500 font-medium" data-i18n="skills_subtitle">Mi trayectoria profesional y arsenal técnico</p>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-16">
@@ -214,7 +245,7 @@
             <span class="p-2 bg-midu-purple/20 rounded-lg text-midu-purple">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
             </span>
-            Professional Path
+            <span data-i18n="skills_path">Trayectoria Profesional</span>
           </h3>
           <div class="space-y-8 border-l-2 border-white/5 ml-5 pl-8">
             <div class="relative group">
@@ -227,7 +258,7 @@
                   </div>
                   <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-bold text-gray-500">2023 - 2024</span>
                 </header>
-                <p class="text-gray-400">During my time at Webhelp, I had the opportunity to work as a QA Tester, where I gained experience in software testing and quality assurance in web, mobile and telephony environments.</p>
+                <p class="text-gray-400" data-i18n="job1_desc">Durante mi tiempo en Webhelp, tuve la oportunidad de trabajar como QA Tester, donde adquirí experiencia en pruebas de software y aseguramiento de calidad en entornos web, móviles y de telefonía.</p>
               </article>
             </div>
             <div class="relative group">
@@ -238,9 +269,9 @@
                     <h4 class="text-xl font-bold">Developer</h4>
                     <p class="text-midu-blue font-semibold">Agencias nacionales</p>
                   </div>
-                  <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-bold text-gray-500">2025 - Currently</span>
+                  <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-bold text-gray-500" data-i18n="job2_date">2025 - Actualmente</span>
                 </header>
-                <p class="text-gray-400">In my current role, I work as a Programmer and Data Analyst, leveraging automation tools and artificial intelligence to solve complex problems and drive the company's sales growth.</p>
+                <p class="text-gray-400" data-i18n="job2_desc">En mi rol actual, trabajo como Programador y Analista de Datos, aprovechando herramientas de automatización e inteligencia artificial para resolver problemas complejos e impulsar el crecimiento de ventas de la empresa.</p>
               </article>
             </div>
           </div>
@@ -248,7 +279,7 @@
 
         <div class="space-y-12">
           <div class="reveal">
-            <h4 class="text-sm font-bold text-gray-500 mb-6 uppercase tracking-widest">Mastered Technologies</h4>
+            <h4 class="text-sm font-bold text-gray-500 mb-6 uppercase tracking-widest" data-i18n="skills_languages">Lenguajes</h4>
             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
               <!-- Skill Icons -->
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
@@ -306,7 +337,7 @@
             </div>
           </div>
           <div class="reveal">
-            <h4 class="text-sm font-bold text-gray-500 mt-12 mb-6 uppercase tracking-widest text-right">Ecosystem & Design</h4>
+            <h4 class="text-sm font-bold text-gray-500 mt-12 mb-6 uppercase tracking-widest text-right" data-i18n="skills_ecosystem">Ecosistema y Diseño</h4>
             <div class="flex flex-wrap justify-end gap-3">
               <span class="px-4 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-bold text-gray-500 tracking-wider">VS Code</span>
               <span class="px-4 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-bold text-gray-500 tracking-wider">Jira</span>
@@ -325,8 +356,8 @@
     <!-- Projects Section -->
     <section id="Proyects" class="max-w-6xl mx-auto py-32">
       <div class="text-center space-y-4 mb-16 reveal">
-        <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter">My <span class="text-gradient-midu">Projects</span></h2>
-        <p class="text-gray-500 font-medium">Learn something about my work</p>
+        <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter"><span data-i18n="projects_title_1">Mis </span><span class="text-gradient-midu" data-i18n="projects_title_2">Proyectos</span></h2>
+        <p class="text-gray-500 font-medium" data-i18n="projects_subtitle">Conoce algo sobre mi trabajo</p>
       </div>
 
       <div class="projects-grid relative grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -338,7 +369,7 @@
           </div>
           <div class="p-6 space-y-3">
             <a href="https://color-theme-swart.vercel.app" target="_blank" class="text-xl font-bold hover:text-midu-purple transition-colors">Color theme ↗</a>
-            <p class="text-sm text-gray-400 leading-relaxed">Find the perfect color palettes for your projects.</p>
+            <p class="text-sm text-gray-400 leading-relaxed" data-i18n="project1_desc">Encuentra las paletas de colores perfectas para tus proyectos.</p>
             <div class="flex flex-wrap gap-2 pt-2">
               <span class="px-3 py-1 bg-midu-purple/10 border border-midu-purple/20 rounded-lg text-[10px] font-bold text-midu-purple uppercase tracking-wider">React</span>
               <span class="px-3 py-1 bg-midu-purple/10 border border-midu-purple/20 rounded-lg text-[10px] font-bold text-midu-purple uppercase tracking-wider">Tailwind</span>
@@ -353,7 +384,7 @@
           </div>
           <div class="p-6 space-y-3">
             <a href="https://julian-rpo-trainer.vercel.app" target="_blank" class="text-xl font-bold hover:text-midu-blue transition-colors">JulianRpo ↗</a>
-            <p class="text-sm text-gray-400 leading-relaxed">Julian RPO Trainer's landing page, a satisfied client showcasing his own training portfolio.</p>
+            <p class="text-sm text-gray-400 leading-relaxed" data-i18n="project2_desc">Página de aterrizaje de Julian RPO Trainer, un cliente satisfecho mostrando su propio portafolio de entrenamiento.</p>
             <div class="flex flex-wrap gap-2 pt-2">
               <span class="px-3 py-1 bg-midu-blue/10 border border-midu-blue/20 rounded-lg text-[10px] font-bold text-midu-blue uppercase tracking-wider">Astro</span>
               <span class="px-3 py-1 bg-midu-blue/10 border border-midu-blue/20 rounded-lg text-[10px] font-bold text-midu-blue uppercase tracking-wider">PHP</span>
@@ -369,7 +400,7 @@
           </div>
           <div class="p-6 space-y-3">
             <a href="https://link-short-pro.vercel.app" target="_blank" class="text-xl font-bold hover:text-midu-purple transition-colors">Link Short Pro ↗</a>
-            <p class="text-sm text-gray-400 leading-relaxed">Shorten your links more efficiently for your future customers</p>
+            <p class="text-sm text-gray-400 leading-relaxed" data-i18n="project3_desc">Acorta tus enlaces de manera más eficiente para tus futuros clientes.</p>
             <div class="flex flex-wrap gap-2 pt-2">
               <span class="px-3 py-1 bg-midu-purple/10 border border-midu-purple/20 rounded-lg text-[10px] font-bold text-midu-purple uppercase tracking-wider">Python</span>
               <span class="px-3 py-1 bg-midu-purple/10 border border-midu-purple/20 rounded-lg text-[10px] font-bold text-midu-purple uppercase tracking-wider">Tailwind</span>
@@ -385,7 +416,7 @@
           </div>
           <div class="p-6 space-y-3">
             <a href="https://news-resumer.vercel.app" target="_blank" class="text-xl font-bold hover:text-midu-blue transition-colors">News Resumer ↗</a>
-            <p class="text-sm text-gray-400 leading-relaxed">Extracting the latest news from Google and implementing AI to summarize it</p>
+            <p class="text-sm text-gray-400 leading-relaxed" data-i18n="project4_desc">Extrayendo las últimas noticias de Google e implementando IA para resumirlas.</p>
             <div class="flex flex-wrap gap-2 pt-2">
               <span class="px-3 py-1 bg-midu-blue/10 border border-midu-blue/20 rounded-lg text-[10px] font-bold text-midu-blue uppercase tracking-wider">Astro</span>
               <span class="px-3 py-1 bg-midu-blue/10 border border-midu-blue/20 rounded-lg text-[10px] font-bold text-midu-blue uppercase tracking-wider">Tailwind</span>
@@ -402,7 +433,7 @@
           </div>
           <div class="p-6 space-y-3">
             <a href="https://remoovi.vercel.app" target="_blank" class="text-xl font-bold hover:text-midu-purple transition-colors">RemooVI ↗</a>
-            <p class="text-sm text-gray-400 leading-relaxed">Remove backgrounds from your photos completely free and fast</p>
+            <p class="text-sm text-gray-400 leading-relaxed" data-i18n="project5_desc">Elimina fondos de tus fotos completamente gratis y rápido.</p>
             <div class="flex flex-wrap gap-2 pt-2">
               <span class="px-3 py-1 bg-midu-purple/10 border border-midu-purple/20 rounded-lg text-[10px] font-bold text-midu-purple uppercase tracking-wider">Python</span>
               <span class="px-3 py-1 bg-midu-purple/10 border border-midu-purple/20 rounded-lg text-[10px] font-bold text-midu-purple uppercase tracking-wider">Tailwind</span>
@@ -418,7 +449,7 @@
           </div>
           <div class="p-6 space-y-3">
             <a href="https://automatizacion-rues.vercel.app" target="_blank" class="text-xl font-bold hover:text-midu-blue transition-colors">Rues Automatizacion ↗</a>
-            <p class="text-sm text-gray-400 leading-relaxed">Get information on thousands of Colombian companies to find out if they are liquidated or active, perfect for cleaning your database.</p>
+            <p class="text-sm text-gray-400 leading-relaxed" data-i18n="project6_desc">Obtén información de miles de empresas colombianas para saber si están liquidadas o activas, perfecto para limpiar tu base de datos.</p>
             <div class="flex flex-wrap gap-2 pt-2">
               <span class="px-3 py-1 bg-midu-blue/10 border border-midu-blue/20 rounded-lg text-[10px] font-bold text-midu-blue uppercase tracking-wider">Next.js</span>
               <span class="px-3 py-1 bg-midu-blue/10 border border-midu-blue/20 rounded-lg text-[10px] font-bold text-midu-blue uppercase tracking-wider">Tailwind</span>
@@ -433,17 +464,17 @@
     <!-- Contact Section -->
     <section id="Contact" class="max-w-3xl mx-auto py-32">
       <div class="text-center space-y-4 mb-16 reveal">
-        <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter">Contact</h2>
-        <p class="text-gray-500 font-medium italic underline decoration-midu-purple underline-offset-8">Let's build something together</p>
+        <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter" data-i18n="contact_title">Contacto</h2>
+        <p class="text-gray-500 font-medium italic underline decoration-midu-purple underline-offset-8" data-i18n="contact_subtitle">Construyamos algo juntos</p>
       </div>
       <div class="card-glow reveal">
         <form action="/send" method="POST" class="space-y-6" novalidate>
           <div class="grid md:grid-cols-2 gap-6">
-            <input type="text" name="name" placeholder="Your Name" class="w-full bg-[#0a0a0a] border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-midu-purple transition-all" required />
-            <input type="email" name="email" placeholder="Your Email" class="w-full bg-[#0a0a0a] border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-midu-purple transition-all" required />
+            <input type="text" name="name" placeholder="Tu Nombre" data-i18n-placeholder="contact_name" class="w-full bg-[#0a0a0a] border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-midu-purple transition-all" required />
+            <input type="email" name="email" placeholder="Tu Email" data-i18n-placeholder="contact_email" class="w-full bg-[#0a0a0a] border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-midu-purple transition-all" required />
           </div>
-          <textarea name="message" rows="5" placeholder="Your Message" class="w-full bg-[#0a0a0a] border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-midu-purple transition-all" required></textarea>
-          <button type="submit" class="w-full py-4 bg-midu-purple text-black font-black uppercase tracking-widest rounded-xl hover:bg-midu-blue hover:text-white transition-all transform hover:-translate-y-1">Send Signal</button>
+          <textarea name="message" rows="5" placeholder="Tu Mensaje" data-i18n-placeholder="contact_message" class="w-full bg-[#0a0a0a] border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-midu-purple transition-all" required></textarea>
+          <button type="submit" class="w-full py-4 bg-midu-purple text-black font-black uppercase tracking-widest rounded-xl hover:bg-midu-blue hover:text-white transition-all transform hover:-translate-y-1" data-i18n="contact_send">Enviar Señal</button>
           <span class="general-error-message block text-center text-red-500 text-sm"></span>
         </form>
       </div>
