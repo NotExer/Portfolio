@@ -1,19 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@source "../templates";
 
-@layer components {
-    .btn-futuristic {
-        @apply relative px-8 py-3 bg-white text-black rounded-full font-bold transition-all duration-300 hover:scale-105 active:scale-95;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    }
+@theme {
+  --color-background: #050505;
+  --color-midu-purple: #d613e7;
+  --color-midu-blue: #8b51f5;
+  --color-midu-yellow: #fdf500;
 
-    .card-glow {
-        @apply bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl transition-all duration-500 hover:border-purple-500/50 hover:bg-white/[0.07];
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-    }
+  --animate-glow-pulse: glow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
-    .text-gradient-midu {
-        @apply bg-gradient-to-r from-midu-purple to-midu-blue bg-clip-text text-transparent;
-    }
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 1; filter: brightness(1.2); }
+    50% { opacity: 0.8; filter: brightness(1); }
+  }
+}
+
+@utility btn-futuristic {
+  position: relative;
+  padding: 0.75rem 2rem;
+  background-color: white;
+  color: black;
+  border-radius: 9999px;
+  font-weight: 700;
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  &:hover { transform: scale(1.05); }
+  &:active { transform: scale(0.95); }
+}
+
+@utility card-glow {
+  background-color: rgb(255 255 255 / 0.05);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  backdrop-filter: blur(24px);
+  transition: all 0.5s;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  &:hover {
+    border-color: rgb(168 85 247 / 0.5);
+    background-color: rgb(255 255 255 / 0.07);
+  }
+}
+
+@utility text-gradient-midu {
+  background-image: linear-gradient(to right, var(--color-midu-purple), var(--color-midu-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

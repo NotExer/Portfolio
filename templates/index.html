@@ -9,54 +9,14 @@
   <title>NotExer</title>
   <link rel="icon" type="image/png" href="static/img/icon.webp" />
   
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            background: "#050505",
-            midu: {
-              purple: "#d613e7",
-              blue: "#8b51f5",
-              yellow: "#fdf500",
-            },
-          },
-          animation: {
-            "glow-pulse": "glow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-          },
-          keyframes: {
-            "glow-pulse": {
-              "0%, 100%": { opacity: 1, filter: "brightness(1.2)" },
-              "50%": { opacity: 0.8, filter: "brightness(1)" },
-            },
-          },
-        },
-      },
-    }
-  </script>
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
   
-  <style type="text/tailwindcss">
-    @layer components {
-      .btn-futuristic {
-        @apply relative px-8 py-3 bg-white text-black rounded-full font-bold transition-all duration-300 hover:scale-105 active:scale-95;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      }
-
-      .card-glow {
-        @apply bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl transition-all duration-500 hover:border-purple-500/50 hover:bg-white/[0.07];
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-      }
-
-      .text-gradient-midu {
-        @apply bg-gradient-to-r from-midu-purple to-midu-blue bg-clip-text text-transparent;
-      }
-    }
-  </style>
-  
-  <!-- Google Fonts: Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Inter (non-render-blocking) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" /></noscript>
 
   <style>
     body {
@@ -206,7 +166,7 @@
       <div class="flex-1 flex justify-center reveal">
         <div class="relative w-64 h-64 lg:w-96 lg:h-96">
           <div class="absolute inset-0 bg-midu-purple/20 blur-[60px] rounded-full animate-pulse"></div>
-          <img src="static/img/Yo.webp" class="relative z-10 w-full h-full object-cover rounded-[40px] border-2 border-white/10 animate-float shadow-2xl shadow-purple-500/20" alt="NotExer" />
+          <img src="static/img/Yo.webp" class="relative z-10 w-full h-full object-cover rounded-[40px] border-2 border-white/10 animate-float shadow-2xl shadow-purple-500/20" alt="NotExer" width="384" height="384" fetchpriority="high" decoding="async" />
         </div>
       </div>
     </section>
@@ -283,55 +243,55 @@
             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
               <!-- Skill Icons -->
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/Html.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="HTML" />
+                <img src="static/img/Html.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="HTML" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">HTML</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/Css.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="CSS" />
+                <img src="static/img/Css.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="CSS" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">CSS</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/Js.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="JS" />
+                <img src="static/img/Js.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="JS" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">JS</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/Bootstrap.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Bootstrap" />
+                <img src="static/img/Bootstrap.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Bootstrap" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">Bootstrap</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/Python.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Python" />
+                <img src="static/img/Python.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Python" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">Python</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/Selenium.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Selenium" />
+                <img src="static/img/Selenium.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Selenium" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">Selenium</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/Django.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Django" />
+                <img src="static/img/Django.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Django" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">Django</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/Postman.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Postman" />
+                <img src="static/img/Postman.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Postman" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">Postman</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/Mysql.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="MySQL" />
+                <img src="static/img/Mysql.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="MySQL" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">MySQL</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/Tailwind.webp" class="w-8 h-8 object-contain opacity-60 group-hover:opacity-100 transition-opacity" alt="Tailwind" />
+                <img src="static/img/Tailwind.webp" class="w-8 h-8 object-contain opacity-60 group-hover:opacity-100 transition-opacity" alt="Tailwind" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">Tailwind</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/React.webp" class="w-8 h-8 object-contain opacity-60 group-hover:opacity-100 transition-opacity" alt="React" />
+                <img src="static/img/React.webp" class="w-8 h-8 object-contain opacity-60 group-hover:opacity-100 transition-opacity" alt="React" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">React</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/Next.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Next.js" />
+                <img src="static/img/Next.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Next.js" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">Next.js</span>
               </div>
               <div class="group relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all">
-                <img src="static/img/PlaywRight.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Playwright" />
+                <img src="static/img/PlaywRight.webp" class="w-8 h-8 object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Playwright" width="32" height="32" loading="lazy" decoding="async" />
                 <span class="text-[10px] font-bold text-gray-500">Playwright</span>
               </div>
             </div>
