@@ -2,6 +2,12 @@
 
 Portfolio web profesional desarrollado con HTML, CSS, JavaScript y Python (Flask). Presenta mi experiencia como QA Tester y Full Stack Developer, destacando habilidades técnicas, experiencia laboral y proyectos.
 
+## 📺 Preview
+
+**🌐 Visita el sitio:**  [https://portfolio-notexer.vercel.app](https://portfolio-notexer.vercel.app)
+
+
+
 ## ✨ Características
 
 - **Diseño Responsivo**: Adaptable a dispositivos móviles, tablets y desktop
